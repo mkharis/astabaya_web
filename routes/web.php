@@ -32,6 +32,31 @@ Route::get('/lainnya', function () {
 Route::get('/lainnya/infografis', function () {
     return view('infografis');
 });
+
 $router->group(['prefix' => 'tabel'], function () use ($router) {
     $router->get('get',  ['uses' => 'TabelController@get']);
+    $router->post('insert',  ['uses' => 'TabelController@insert']);
+    $router->post('delete',  ['uses' => 'TabelController@delete']);
+    $router->post('update',  ['uses' => 'TabelController@update']);
+});
+
+$router->group(['prefix' => 'isi_tabel'], function () use ($router) {
+    $router->get('get',  ['uses' => 'IsiTabelController@get']);
+    $router->post('insert',  ['uses' => 'IsiTabelController@insert']);
+    $router->post('delete',  ['uses' => 'IsiTabelController@delete']);
+    $router->post('update',  ['uses' => 'IsiTabelController@update']);
+});
+
+$router->group(['prefix' => 'kategori'], function () use ($router) {
+    $router->get('get',  ['uses' => 'KategoriController@get']);
+    $router->post('insert',  ['uses' => 'KategoriController@insert']);
+    $router->post('delete',  ['uses' => 'KategoriController@delete']);
+    $router->post('update',  ['uses' => 'KategoriController@update']);
+});
+
+$router->group(['prefix' => 'sub_kategori'], function () use ($router) {
+    $router->get('get',  ['uses' => 'SubKategoriController@get']);
+    $router->post('insert',  ['uses' => 'SubKategoriController@insert']);
+    $router->post('delete',  ['uses' => 'SubKategoriController@delete']);
+    $router->post('update',  ['uses' => 'SubKategoriController@update']);
 });
