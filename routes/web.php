@@ -32,3 +32,6 @@ Route::get('/lainnya', function () {
 Route::get('/lainnya/infografis', function () {
     return view('infografis');
 });
+$router->group(['prefix' => 'tabel'], function () use ($router) {
+    $router->get('get',  ['uses' => 'TabelController@get']);
+});
