@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('beranda');
 });
 
-Route::get('/tabel', function () {
-    return view('tabel');
+Route::get('/kategori', function () {
+    return view('kategori');
 });
 
 Route::get('/publikasi', function () {

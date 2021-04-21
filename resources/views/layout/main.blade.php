@@ -3,6 +3,9 @@
 <head>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Import Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
   <!-- Import MDI Icon -->
@@ -12,6 +15,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>@yield('title')</title>
+
+  <style>
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,15 +28,14 @@
 
     <nav>
       <div class="nav-wrapper">
-        <ul id="nav-mobile" class="left">
-          <li><a href="/" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a></li>
-        </ul>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="/tabel">Tabel</a></li>
+        <a href="#" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/kategori">Kategori</a></li>
           <li><a href="/publikasi">Publikasi</a></li>
           <li><a href="/lainnya">Lainnya</a></li>
         </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {{-- <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
             <div class="right row">
               <div class="col s12" >
@@ -40,7 +48,7 @@
               </div>
             </div>
           </li>
-        </ul>
+        </ul> --}}
       </div>
     </nav>
 
@@ -66,17 +74,17 @@
 
     M.AutoInit();
 
-        // Collapsible
-        $(document).ready(function(){
-          $('.collapsible').collapsible();
-        });
+    // Collapsible
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
 
-        // Collapsible Expandable
-        // var elem = document.querySelector('.collapsible.expandable');
-        // var instance = M.Collapsible.init(elem, {
-        //   accordion: false
-        // });
+    // Collapsible Expandable
+    // var elem = document.querySelector('.collapsible.expandable');
+    // var instance = M.Collapsible.init(elem, {
+    //   accordion: false
+    // });
 
-      </script>
-    </body>
-    </html>
+  </script>
+</body>
+</html>
