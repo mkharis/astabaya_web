@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class IsiTabel extends Model
 {
     public $table = 'isi_tabel';
+    
+    public $timestamps = false;
+    
     /**
     * The attributes that are mass assignable.
     *
