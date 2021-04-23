@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\SubKategori;
 
-class KategoriController extends Controller
+class SubKategoriController extends Controller
 {
     public function get(Request $request)
     {

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class SubKategori extends Model
 {
     public $table = 'sub_kategori';
+    
+    public $timestamps = false;
+    
     /**
     * The attributes that are mass assignable.
     *

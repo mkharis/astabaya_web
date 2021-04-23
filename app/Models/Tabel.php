@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tabel extends Model
 {
     public $table = 'tabel';
+
+    public $timestamps = false;
+    
     /**
     * The attributes that are mass assignable.
     *
