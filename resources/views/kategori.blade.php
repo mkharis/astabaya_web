@@ -3,8 +3,8 @@
 @section('title','Kategori')
 
 @section('breadcrumb')
-<a href="/" class="breadcrumb">Beranda</a>
-<a href="/kategori" class="breadcrumb">Kategori</a>
+<a href="{{ url() }}" class="breadcrumb">Beranda</a>
+<a href="{{ url('kategori') }}" class="breadcrumb">Kategori</a>
 @endsection
 
 @section('main')
@@ -28,27 +28,15 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($kategori as $k)
               <tr>
-                <td>Sosial dan Kependudukan</td>
+                <td>{{ $k->kategori }}</td>
                 <td class="center-align">
                   <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
                   <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
                 </td>
               </tr>
-              <tr>
-                <td>Ekonomi dan Perdagangan</td>
-                <td class="center-align">
-                  <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Pertanian dan Pertambangan</td>
-                <td class="center-align">
-                  <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -70,30 +58,22 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($subkategori as $sk)
               <tr>
-                <td>Sosial dan Kependudukan</td>
-                <td><a class="waves-effect waves-light btn-small teal darken-3">Penduduk</a></td>
+                @if ($sk->kategori_id == '3')
+                <td><a class="waves-effect waves-light btn-small teal darken-3">{{ $sk->sub_kategori }}</a></td>  
+                @elseif ($sk->kategori_id == '2')
+                <td><a class="waves-effect waves-light btn-small orange darken-3">{{ $sk->sub_kategori }}</a></td>  
+                @else
+                <td><a class="waves-effect waves-light btn-small blue darken-3">{{ $sk->sub_kategori }}</a></td>  
+                @endif
+                <td>{{ $sk->kategori }}</td>
                 <td class="center-align">
                   <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
                   <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
                 </td>
               </tr>
-              <tr>
-                <td>Ekonomi dan Perdagangan</td>
-                <td><a class="waves-effect waves-light btn-small teal darken-3">Inflasi</a></td>
-                <td class="center-align">
-                  <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Pertanian dan Pertambangan</td>
-                <td><a class="waves-effect waves-light btn-small teal darken-3">Holtikultura</a></td>
-                <td class="center-align">
-                  <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

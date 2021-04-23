@@ -13,26 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'beranda', function () {
     return view('beranda');
+}]);
+
+Route::group(['namespace' => 'Admin'], function () {
+    Route::get('/kategori', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
 });
 
-Route::get('/kategori', function () {
-    return view('kategori');
-});
 
-Route::get('/publikasi', function () {
+Route::get('/publikasi', ['as' => 'publikasi', function () {
     return view('publikasi');
-});
+}]);
 
-Route::get('/lainnya', function () {
+Route::get('/lainnya', ['as' => 'lainnya', function () {
     return view('lainnya');
-});
+}]);
 
-Route::get('/lainnya/infografis', function () {
+Route::get('/lainnya/infografis', ['as' => 'infografis', function () {
     return view('infografis');
-});
+}]);
 
+
+// API
 $router->group(['prefix' => 'tabel'], function () use ($router) {
     $router->get('get',  ['uses' => 'TabelController@get']);
     $router->post('insert',  ['uses' => 'TabelController@insert']);

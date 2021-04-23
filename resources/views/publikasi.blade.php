@@ -3,8 +3,8 @@
 @section('title','Publikasi')
 
 @section('breadcrumb')
-<a href="/" class="breadcrumb">Beranda</a>
-<a href="/publikasi" class="breadcrumb">Publikasi</a>
+<a href="." class="breadcrumb">Beranda</a>
+<a href="publikasi" class="breadcrumb">Publikasi</a>
 @endsection
 
 @section('main')

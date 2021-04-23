@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href={{ url("css/materialize.css") }} media="screen,projection"/>
   <!-- Import MDI Icon -->
   <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
 
@@ -28,12 +28,12 @@
 
     <nav>
       <div class="nav-wrapper">
-        <a href="#" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
+        <a href="{{ route("beranda") }}" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/">Beranda</a></li>
-          <li><a href="/kategori">Kategori</a></li>
-          <li><a href="/publikasi">Publikasi</a></li>
-          <li><a href="/lainnya">Lainnya</a></li>
+          <li><a href="{{ route("beranda") }}">Beranda</a></li>
+          <li><a href="{{ route("kategori") }}">Kategori</a></li>
+          <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
+          <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
         </ul>
         {{-- <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
@@ -69,15 +69,15 @@
   </footer>
 
   <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="/js/materialize.js "></script>
+  <script type="text/javascript" src="{{ url("js/materialize.js") }}"></script>
   <script type="text/javascript">
 
     M.AutoInit();
 
     // Collapsible
-    $(document).ready(function(){
-      $('.collapsible').collapsible();
-    });
+    // $(document).ready(function(){
+    //   $('.collapsible').collapsible();
+    // });
 
     // Collapsible Expandable
     // var elem = document.querySelector('.collapsible.expandable');

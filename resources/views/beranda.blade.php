@@ -3,7 +3,7 @@
 @section('title','Beranda')
 
 @section('breadcrumb')
-<a href="/" class="breadcrumb">Beranda</a>
+<a href="." class="breadcrumb">Beranda</a>
 @endsection
 
 @section('main')
@@ -77,7 +77,7 @@
     <div class="section">
       <div class="row">
         <div class="col s8 left-align"><h6>Publikasi Terbaru</h6></div>
-        <div class="col s4 right-align"><a href="/publikasi" class="waves-effect waves-teal btn-flat"><h6 style="color:#0f8ed6 !important">Lainnya ></h6></a></div>
+        <div class="col s4 right-align"><a href="publikasi" class="waves-effect waves-teal btn-flat"><h6 style="color:#0f8ed6 !important">Lainnya ></h6></a></div>
       </div>
       <div class="row">
         <div class="col s12 left-align"><p>Lorem ipsum dolor sit amet</p></div>

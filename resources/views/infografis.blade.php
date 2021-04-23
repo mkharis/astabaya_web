@@ -3,9 +3,9 @@
 @section('title','Infografis')
 
 @section('breadcrumb')
-<a href="/" class="breadcrumb">Beranda</a>
-<a href="/lainnya" class="breadcrumb">Lainnya</a>
-<a href="/lainnya/infografis" class="breadcrumb">Infografis</a>
+<a href="." class="breadcrumb">Beranda</a>
+<a href="{{ url('lainnya') }}" class="breadcrumb">Lainnya</a>
+<a href="{{ url('infografis') }}" class="breadcrumb">Infografis</a>
 @endsection
 
 @section('main')
@@ -23,7 +23,7 @@
 
       <tbody>
         <tr>
-          <td> <img class="materialboxed" width="75" src="/images/infografis/sp2020.jpg"></td>
+          <td> <img class="materialboxed" width="75" src="{{ url('images/infografis/sp2020.jpg') }}"></td>
           <td>Penduduk Hasil SP2020 Kota Surabaya</td>
           <td class="center-align">
             <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
@@ -31,7 +31,7 @@
           </td>
         </tr>
         <tr>
-          <td> <img class="materialboxed" width="75" src="/images/infografis/kemiskinan.jpg"></td>
+          <td> <img class="materialboxed" width="75" src="{{ url('images/infografis/kemiskinan.jpg') }}"></td>
           <td>Kemiskinan 2020</td>
           <td class="center-align">
             <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
