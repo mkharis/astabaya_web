@@ -10,7 +10,7 @@ class SubKategoriController extends Controller
 {
     public function get(Request $request)
     {
-        $subKategori = Tabel::select(['id', 'sub_kategori', 'link'])
+        $subKategori = SubKategori::select(['id', 'sub_kategori', 'link'])
                 ->where('kategori_id', $request->kategori_id)
                 ->get();
 
