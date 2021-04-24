@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['as' => 'beranda', function () {
-    return view('beranda');
-}]);
+// Route::get('/', ['as' => 'beranda', function () {
+//     return view('beranda');
+// }]);
 
 Route::group(['namespace' => 'Admin'], function () {
     // Kategori
-    Route::get('/kategori', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
+    Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
     // Lainnya
     Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
     Route::post('/lainnya/updateInfo', ['as' => 'infoUpdate', 'uses' => 'TentangController@updateInfo']);

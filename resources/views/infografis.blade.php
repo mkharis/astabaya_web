@@ -4,7 +4,6 @@
 
 @section('breadcrumb')
 <a href="." class="breadcrumb">Beranda</a>
-<a href="{{ url('lainnya') }}" class="breadcrumb">Lainnya</a>
 <a href="{{ url('infografis') }}" class="breadcrumb">Infografis</a>
 @endsection
 

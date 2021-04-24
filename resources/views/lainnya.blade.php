@@ -11,7 +11,7 @@
 <main>
   <div class="container">
 
-    <div class="section">
+    {{-- <div class="section">
       <div class="row">
         <div class="col s12 left-align"><h6>Lainnya</h6></div>
       </div>
@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="divider"></div>
+    <div class="divider"></div> --}}
 
     <div class="section">
 

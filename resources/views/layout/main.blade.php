@@ -31,11 +31,12 @@
     <nav>
       <div class="container">
         <div class="nav-wrapper">
-          <a href="{{ route("beranda") }}" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
+          <a href="{{ route("kategori") }}" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="{{ route("beranda") }}">Beranda</a></li>
+            {{-- <li><a href="{{ route("beranda") }}">Beranda</a></li> --}}
             <li><a href="{{ route("kategori") }}">Kategori</a></li>
             <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
+            <li><a href="{{ route("infografis") }}">Infografis</a></li>
             <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
           </ul>
         </div>
