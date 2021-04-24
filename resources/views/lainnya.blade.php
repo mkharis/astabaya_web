@@ -47,7 +47,7 @@
               <div class="collapsible-header valign-wrapper">Informasi Umum</div>
               <div class="collapsible-body">
                 <a href="#modalInfo" class="modal-trigger waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4"><i class="material-icons left">mode_edit</i>Edit</span></a>
-                <p>BPS Kota Surabaya adalah instansi vertikal yang berada di bawah dan bertanggung jawab kepada kepala BPS Provinsi Jawa Timur. Struktur organisasi BPS Kota Surabaya sesuai dengan Peraturan Presiden Nomor 86 Tahun 2007 terdiri dari Kepala, Subbagian Tata Usaha, Seksi Statistik Sosial, Seksi Statistik Produksi, Seksi Statistik Distribusi, Seksi Neraca Wilayah dan Analisis Statistik, dan Seksi Integrasi Pengolahan dan Diseminasi Statistik.</p>
+                <p style="white-space: pre-wrap;">{{ $info[0]->isi }}</p>
               </div>
             </li>
             <li>
@@ -55,32 +55,30 @@
               <div class="collapsible-body">
                 <a href="#modalVisiMisi" class="modal-trigger waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4"><i class="material-icons left">mode_edit</i>Edit</span></a>
                 <h6>Visi</h6>
-                <p>Pelopor data statistik terpercaya untuk semua.</p>
+                <p style="white-space: pre-wrap;">{{ $visi[0]->isi }}</p>
                 <p>&nbsp</p>
                 <h6>Misi</h6>
-                <p>1. &nbsp Menyediakan data statistik berkualitas melalui kegiatan statistik yang terintegrasi dan berstandar nasional maupun internasional.</p>
-                <p>2. &nbsp Memperkuat Sistem Statistik Nasional yang berkesinambungan melalui pembinaan dan koordinasi di bidang statistik.</p>
-                <p>3. &nbsp Membangun insan statistik yang profesional, berintegritas dan amanah untuk kemajuan perstatistikan.</p>
+                <p style="white-space: pre-wrap;">{{ $misi[0]->isi }}</p>
               </div>
             </li>
             <li>
               <div class="collapsible-header valign-wrapper">Kontak</div>
               <div class="collapsible-body">
                 <a href="#modalKontak" class="modal-trigger waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4"><i class="material-icons left">mode_edit</i>Edit</span></a>
-                <p><i class="mdi mdi-map-marker left"></i>Jl. Ahmad Yani 152-E Surabaya 60235</p>
-                <p><i class="mdi mdi-phone left"></i>(031) 8296692</p>
-                <p><i class="mdi mdi-fax left"></i>(031) 8296691</p>
-                <p><i class="mdi mdi-email-outline left"></i>bps3578@bps.go.id</p>
+                <p><i class="mdi mdi-map-marker left"></i>{{ $alamat[0]->isi }}</p>
+                <p><i class="mdi mdi-phone left"></i>{{ $telepon[0]->isi }}</p>
+                <p><i class="mdi mdi-fax left"></i>{{ $fax[0]->isi }}</p>
+                <p><i class="mdi mdi-email-outline left"></i>{{ $email[0]->isi }}</p>
               </div>
             </li>
             <li>
               <div class="collapsible-header valign-wrapper">Media Sosial</div>
               <div class="collapsible-body">
                 <a href="#modalMedsos" class="modal-trigger waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4"><i class="material-icons left">mode_edit</i>Edit</span></a>
-                <p><i class="mdi mdi-web left"></i>surabayakota.bps.go.id</p>
-                <p><i class="mdi mdi-facebook left"></i>BPS Kota Surabaya</p>
-                <p><i class="mdi mdi-instagram left"></i>@bpskotasurabaya</p>
-                <p><i class="mdi mdi-youtube left"></i>BPS Kota Surabaya</p>
+                <p><i class="mdi mdi-web left"></i>{{ $website[0]->isi }}</p>
+                <p><i class="mdi mdi-facebook left"></i>{{ $facebook[0]->isi }}</p>
+                <p><i class="mdi mdi-instagram left"></i>{{ $instagram[0]->isi }}</p>
+                <p><i class="mdi mdi-youtube left"></i>{{ $youtube[0]->isi }}</p>
               </div>
             </li>
           </ul>
@@ -94,115 +92,123 @@
 
     <!-- Modal Structure -->
     {{-- Informasi Umum --}}
-    <div id="modalInfo" class="modal dismissible">
-      <form action="">
+    <div id="modalInfo" class="modal modal-fixed-footer">
+      <form action="{{ route('infoUpdate') }}" method="post">
         <div class="modal-content">
           <div class="row">
             <h5>Informasi Umum</h5>
             
             <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">Informasi Umum</label>
+              <textarea id="info" name="info" class="materialize-textarea">{{ $info[0]->isi }}</textarea>
+              {{-- <label for="textarea1">Informasi Umum</label> --}}
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <a href="#!" class="modal-close waves-effect waves-light btn-small green darken-1">Simpan</a>
+          <a href="{{ url('lainnya') }}" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
 
     {{-- Visi dan Misi Modal --}}
-    <div id="modalVisiMisi" class="modal">
-      <form action="">
+    <div id="modalVisiMisi" class="modal modal-fixed-footer">
+      <form action="{{ route('visiMisiUpdate') }}" method="post">
         <div class="modal-content">
           <h5>Visi dan Misi</h5>
-          
           <div class="input-field col s6">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
-            <label for="textarea1">Visi</label>
+            <textarea id="visi" name="visi" class="materialize-textarea">{{ $visi[0]->isi }}</textarea>
+            <label for="visi">Visi</label>
           </div>
           <div class="input-field col s6">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
-            <label for="textarea1">Misi</label>
+            <textarea id="misi" name="misi" class="materialize-textarea">{{ $misi[0]->isi }}</textarea>
+            <label for="misi">Misi</label>
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <a href="#!" class="modal-close waves-effect waves-light btn-small green darken-1">Simpan</a>
+          <a href="{{ url('lainnya') }}" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
 
     {{-- Kontak --}}
-    <div id="modalKontak" class="modal">
-      <form action="">
+    <div id="modalKontak" class="modal modal-fixed-footer">
+      <form action="{{ route('kontakUpdate') }}" method="POST">
         <div class="modal-content">
           <h5>Kontak</h5>
           
           <div class="input-field col s6">
             <i class="mdi mdi-map-marker prefix"></i>
-            <input id="alamat" type="text" class="validate">
+            <input id="alamat" name="alamat" type="text" class="validate" value="{{ $alamat[0]->isi }}">
             <label for="alamat">Alamat</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-phone prefix"></i>
-            <input id="telepon" type="text" class="validate">
+            <input id="telepon" name="telepon" type="text" class="validate" value="{{ $telepon[0]->isi }}">
             <label for="telepon">Telepon</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-fax prefix"></i>
-            <input id="fax" type="text" class="validate">
+            <input id="fax" name="fax" type="text" class="validate" value="{{ $fax[0]->isi }}">
             <label for="fax">Fax</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-email-outline prefix"></i>
-            <input id="email" type="text" class="validate">
+            <input id="email" name="email" type="text" class="validate" value="{{ $email[0]->isi }}">
             <label for="email">Email</label>
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <a href="#!" class="modal-close waves-effect waves-light btn-small green darken-1">Simpan</a>
+          <a href="{{ url('lainnya') }}" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
 
     {{-- Medsos --}}
-    <div id="modalMedsos" class="modal">
-      <form action="">
+    <div id="modalMedsos" class="modal modal-fixed-footer">
+      <form action="{{ route('medsosUpdate') }}" method="POST">
         <div class="modal-content">
           <h5>Media Sosial</h5>
           
           <div class="input-field col s6">
             <i class="mdi mdi-web prefix"></i>
-            <input id="website" type="text" class="validate">
+            <input id="website" name="website" type="text" class="validate" value="{{ $website[0]->isi }}">
             <label for="website">Website</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-facebook prefix"></i>
-            <input id="facebook" type="text" class="validate">
+            <input id="facebook" name="facebook" type="text" class="validate" value="{{ $facebook[0]->isi }}">
             <label for="facebook">Facebook</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-instagram prefix"></i>
-            <input id="instagram" type="text" class="validate">
+            <input id="instagram" name="instagram" type="text" class="validate" value="{{ $instagram[0]->isi }}">
             <label for="instagram">Instagram</label>
           </div>
           <div class="input-field col s6">
             <i class="mdi mdi-youtube prefix"></i>
-            <input id="youtube" type="text" class="validate">
+            <input id="youtube" name="youtube" type="text" class="validate" value="{{ $youtube[0]->isi }}">
             <label for="youtube">Youtube</label>
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <a href="#!" class="modal-close waves-effect waves-light btn-small green darken-1">Simpan</a>
+          <a href="{{ url('lainnya') }}" class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
 
   </div>
+  <script>
+    $(document).ready(function(){
+      $('.modal').modal({
+          dismissible: false,
+          preventScrolling: false,
+        }
+      );
+    })
+  </script>
 </main>
 @endsection

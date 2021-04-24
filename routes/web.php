@@ -18,7 +18,14 @@ Route::get('/', ['as' => 'beranda', function () {
 }]);
 
 Route::group(['namespace' => 'Admin'], function () {
+    // Kategori
     Route::get('/kategori', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
+    // Lainnya
+    Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
+    Route::post('/lainnya/updateInfo', ['as' => 'infoUpdate', 'uses' => 'TentangController@updateInfo']);
+    Route::post('/lainnya/updateVisiMisi', ['as' => 'visiMisiUpdate', 'uses' => 'TentangController@updateVisiMisi']);
+    Route::post('/lainnya/updateKontak', ['as' => 'kontakUpdate', 'uses' => 'TentangController@updateKontak']);
+    Route::post('/lainnya/updateMedsos', ['as' => 'medsosUpdate', 'uses' => 'TentangController@updateMedsos']);
 });
 
 
@@ -26,9 +33,9 @@ Route::get('/publikasi', ['as' => 'publikasi', function () {
     return view('publikasi');
 }]);
 
-Route::get('/lainnya', ['as' => 'lainnya', function () {
-    return view('lainnya');
-}]);
+// Route::get('/lainnya', ['as' => 'lainnya', function () {
+//     return view('lainnya');
+// }]);
 
 Route::get('/lainnya/infografis', ['as' => 'infografis', function () {
     return view('infografis');
