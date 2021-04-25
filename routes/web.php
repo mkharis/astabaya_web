@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Admin'], function () {
     // Kategori
     Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
+    // Infografis
+    Route::get('/infografis', ['as' => 'infografis', 'uses' => 'InfografisController@get']);
+    Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);
+    Route::post('/infografis/remove', ['as' => 'infografisRemove', 'uses' => 'InfografisController@remove']);
     // Lainnya
     Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
     Route::post('/lainnya/updateInfo', ['as' => 'infoUpdate', 'uses' => 'TentangController@updateInfo']);
@@ -37,9 +41,9 @@ Route::get('/publikasi', ['as' => 'publikasi', function () {
 //     return view('lainnya');
 // }]);
 
-Route::get('/lainnya/infografis', ['as' => 'infografis', function () {
-    return view('infografis');
-}]);
+// Route::get('/lainnya/infografis', ['as' => 'infografis', function () {
+//     return view('infografis');
+// }]);
 
 
 // API

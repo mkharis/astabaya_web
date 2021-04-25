@@ -96,7 +96,9 @@
       <form action="{{ route('infoUpdate') }}" method="post">
         <div class="modal-content">
           <div class="row">
-            <h5>Informasi Umum</h5>
+            <div class="section center-align">
+              <h5>Informasi Umum</h5>
+            </div>
             
             <div class="input-field col s12">
               <textarea id="info" name="info" class="materialize-textarea">{{ $info[0]->isi }}</textarea>
@@ -115,7 +117,10 @@
     <div id="modalVisiMisi" class="modal modal-fixed-footer">
       <form action="{{ route('visiMisiUpdate') }}" method="post">
         <div class="modal-content">
-          <h5>Visi dan Misi</h5>
+          <div class="section center-align">
+            <h5>Visi dan Misi</h5>
+          </div>
+
           <div class="input-field col s6">
             <textarea id="visi" name="visi" class="materialize-textarea">{{ $visi[0]->isi }}</textarea>
             <label for="visi">Visi</label>
@@ -136,7 +141,9 @@
     <div id="modalKontak" class="modal modal-fixed-footer">
       <form action="{{ route('kontakUpdate') }}" method="POST">
         <div class="modal-content">
-          <h5>Kontak</h5>
+          <div class="section center-align">
+            <h5>Kontak</h5>
+          </div>
           
           <div class="input-field col s6">
             <i class="mdi mdi-map-marker prefix"></i>
@@ -170,7 +177,9 @@
     <div id="modalMedsos" class="modal modal-fixed-footer">
       <form action="{{ route('medsosUpdate') }}" method="POST">
         <div class="modal-content">
-          <h5>Media Sosial</h5>
+          <div class="section center-align">
+            <h5>Media Sosial</h5>
+          </div>
           
           <div class="input-field col s6">
             <i class="mdi mdi-web prefix"></i>
@@ -201,14 +210,5 @@
     </div>
 
   </div>
-  <script>
-    $(document).ready(function(){
-      $('.modal').modal({
-          dismissible: false,
-          preventScrolling: false,
-        }
-      );
-    })
-  </script>
 </main>
 @endsection

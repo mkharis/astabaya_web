@@ -9,7 +9,7 @@ use App\Models\Tentang;
 
 class TentangController extends Controller
 {
-    public function getInfo(Request $request)
+    public function getInfo()
     {
         $info = Tentang::select('isi')
                 ->where('info', 'Informasi Umum')

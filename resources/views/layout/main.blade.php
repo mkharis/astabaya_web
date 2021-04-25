@@ -28,20 +28,22 @@
 <body>
   <header>
 
-    <nav>
-      <div class="container">
-        <div class="nav-wrapper">
-          <a href="{{ route("kategori") }}" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            {{-- <li><a href="{{ route("beranda") }}">Beranda</a></li> --}}
-            <li><a href="{{ route("kategori") }}">Kategori</a></li>
-            <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
-            <li><a href="{{ route("infografis") }}">Infografis</a></li>
-            <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
-          </ul>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="{{ route("kategori") }}" style="font-size: 2.1rem; padding: 0 1rem 0 1rem;">ASTABAYA</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              {{-- <li><a href="{{ route("beranda") }}">Beranda</a></li> --}}
+              <li><a href="{{ route("kategori") }}">Kategori</a></li>
+              <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
+              <li><a href="{{ route("infografis") }}">Infografis</a></li>
+              <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <nav class="z-depth-0" style="background-color:rgba(0,0,0,0.0);">
       <div class="container">
@@ -64,20 +66,31 @@
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="{{ url("js/materialize.js") }}"></script>
   <script type="text/javascript">
+    $(document).ready(function(){
+      M.AutoInit();
 
-    M.AutoInit();
+      $('.modal').modal({
+          dismissible: false,
+          preventScrolling: false,
+        }
+      );
 
-    // Collapsible
-    // $(document).ready(function(){
-    //   $('.collapsible').collapsible();
-    // });
-
-    // Collapsible Expandable
-    // var elem = document.querySelector('.collapsible.expandable');
-    // var instance = M.Collapsible.init(elem, {
-    //   accordion: false
-    // });
-
+      $('#listInfografi').on('click', '.modal-trigger', function() {
+        var infografis_id = $(this).data('id');
+        var judul = $(this).parents('#' + infografis_id).children('.judul').data('judul');
+        var img = $(this).parents('#' + infografis_id).children('.img').data('img');
+        
+        if(infografis_id) {
+          // Fill Infografis Id
+          $('input#infografis_id.validate.edit-infografis').val(infografis_id);
+          // Fill Infografis Judul
+          $('input#judul.validate.edit-infografis').val(judul);
+          $('label#judul.edit-infografis', function() {
+            M.updateTextFields();
+          });
+        }
+      })
+    })
   </script>
 </body>
 </html>
