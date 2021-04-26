@@ -44,11 +44,12 @@ class InfografisController extends Controller
 
     public function remove(Request $request)
     {
-        $infografis = Infografis::where('id', $request->id);
-
-        dd($infografis);
-        if(File::exists($infografis->file_path)) {
+        $infografis = Infografis::find($request->id);
+        
+        if (File::exists($infografis->file_path)) {
             File::delete($infografis->file_path);
+            
+            Infografis::destroy($request->id);
         }
 
         return redirect()->route('infografis');

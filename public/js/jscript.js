@@ -13,7 +13,10 @@ $(document).ready(function(){
         
         if(infografis_id) {
             // Fill Infografis Id
+            // For Edit
             $('input#id.validate.edit-infografis').val(infografis_id);
+            // For Remove
+            $('input#id.validate.remove-infografis').val(infografis_id);
             // Fill Infografis Judul
             $('input#judul.validate.edit-infografis').val(judul);
             $('label#judul.edit-infografis', function() {

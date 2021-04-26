@@ -103,18 +103,21 @@
 
     {{-- Remove Infografis --}}
     <div id="modalRemoveInfografis" class="modal">
-      <div class="modal-content">
-        <div class="row">
-          <div class="section center-align">
-            <h5>Apakah Anda yakin?</h5>
+      <form action="{{ route('infografisRemove') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <input id="id" name="id" type="hidden" class="validate remove-infografis" value="">
+            <div class="section center-align">
+              <h5>Apakah Anda yakin?</h5>
+            </div>
+            <p>Data yang dihapus tidak akan bisa dikembalikan!</p>
           </div>
-          <p>Data yang dihapus tidak akan bisa dikembalikan!</p>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-small green darken-1">Batal</a>
-        <a class="remove-infografis waves-effect waves-light btn-small red darken-1">Hapus</a>
-      </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small green darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light red darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Hapus</button>
+        </div>
+      </form>
     </div>
 
   </div>
