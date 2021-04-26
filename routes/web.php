@@ -19,10 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Admin'], function () {
     // Kategori
-    Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@getKategori']);
+    Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
+    Route::post('/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);
+    Route::post('/edit', ['as' => 'kategoriEdit', 'uses' => 'KategoriController@edit']);
+    Route::post('/remove', ['as' => 'kategoriRemove', 'uses' => 'KategoriController@remove']);
     // Infografis
     Route::get('/infografis', ['as' => 'infografis', 'uses' => 'InfografisController@get']);
     Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);
+    Route::post('/infografis/edit', ['as' => 'infografisEdit', 'uses' => 'InfografisController@edit']);
     Route::post('/infografis/remove', ['as' => 'infografisRemove', 'uses' => 'InfografisController@remove']);
     // Lainnya
     Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
@@ -37,13 +41,6 @@ Route::get('/publikasi', ['as' => 'publikasi', function () {
     return view('publikasi');
 }]);
 
-// Route::get('/lainnya', ['as' => 'lainnya', function () {
-//     return view('lainnya');
-// }]);
-
-// Route::get('/lainnya/infografis', ['as' => 'infografis', function () {
-//     return view('infografis');
-// }]);
 
 
 // API

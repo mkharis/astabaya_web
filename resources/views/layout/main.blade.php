@@ -65,32 +65,6 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="{{ url("js/materialize.js") }}"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      M.AutoInit();
-
-      $('.modal').modal({
-          dismissible: false,
-          preventScrolling: false,
-        }
-      );
-
-      $('#listInfografi').on('click', '.modal-trigger', function() {
-        var infografis_id = $(this).data('id');
-        var judul = $(this).parents('#' + infografis_id).children('.judul').data('judul');
-        var img = $(this).parents('#' + infografis_id).children('.img').data('img');
-        
-        if(infografis_id) {
-          // Fill Infografis Id
-          $('input#infografis_id.validate.edit-infografis').val(infografis_id);
-          // Fill Infografis Judul
-          $('input#judul.validate.edit-infografis').val(judul);
-          $('label#judul.edit-infografis', function() {
-            M.updateTextFields();
-          });
-        }
-      })
-    })
-  </script>
+  <script type="text/javascript" src="{{ url('js/jscript.js') }}"></script>
 </body>
 </html>

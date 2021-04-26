@@ -10,7 +10,7 @@ use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
-    public function getKategori(Request $request)
+    public function get(Request $request)
     {
         $kategori = Kategori::select(['id', 'kategori'])
                 ->get();
@@ -22,39 +22,29 @@ class KategoriController extends Controller
         return view('kategori', compact(['kategori', 'subkategori']));
     }
 
-    public function delete(Request $request)
+    public function remove(Request $request)
     {
         Kategori::destroy($request->id);
 
-        return response()->json(['message' => 'Data berhasil dihapus']);
+        return redirect()->route('kategori');
     }
 
-    public function insert(Request $request)
+    public function add(Request $request)
     {
         $kategori = Kategori::create([
             'kategori' => $request->kategori,
         ]);
 
-        $data['kategori'] = $kategori;
-
-        return response()->json([
-            'message' => 'Data berhasil ditambahkan',
-            'data' => $data
-        ]);
+        return redirect()->route('kategori');
     }
 
-    public function update(Request $request)
+    public function edit(Request $request)
     {
         $kategori = Kategori::find($request->id);
         $kategori->update([
             'kategori' => $request->kategori,
         ]);
 
-        $data['kategori'] = $kategori;
-
-        return response()->json([
-            'message' => 'Data berhasil diperbaruhi',
-            'data' => $data
-        ]);
+        return redirect()->route('kategori');
     }
 }
