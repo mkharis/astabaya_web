@@ -74,20 +74,20 @@
         </div>
         <div class="modal-footer">
           <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
 
     {{-- Edit Infografis --}}
     <div id="modalEditInfografis" class="modal">
-      <form action="{{ route('infografisAdd') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('infografisEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
               <h5>Infografis</h5>
             </div>
-            <input id="infografis_id" name="infografis_id" type="hidden" class="validate edit-infografis" value="">
+            <input id="id" name="id" type="hidden" class="validate edit-infografis" value="">
             <div class="input-field">
               <input id="judul" name="judul" type="text" class="validate edit-infografis">
               <label id="judul" class="edit-infografis" for="judul">Judul</label>
@@ -96,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
-          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>

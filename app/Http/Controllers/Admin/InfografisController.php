@@ -53,4 +53,15 @@ class InfografisController extends Controller
 
         return redirect()->route('infografis');
     }
+
+    public function edit(Request $request)
+    {
+        $infografis = Infografis::where('id',$request->id);
+        
+        $infografis->update([
+            'judul' => $request->judul
+        ]);
+
+        return redirect()->route('infografis');
+    }
 }
