@@ -29,7 +29,7 @@ class InfografisController extends Controller
             if ($request->file('image')->move($destination_path, $image)) {
                 $infografis = Infografis::create([
                     'judul' => $request->judul,
-                    'file_path' => '/images/infografis/' . $image,
+                    'file_path' => 'images/infografis/' . $image,
                 ]);
                 // return $this->responseRequestSuccess($user);
             } else {
@@ -48,7 +48,7 @@ class InfografisController extends Controller
         
         if (File::exists($infografis->file_path)) {
             File::delete($infografis->file_path);
-            
+
             Infografis::destroy($request->id);
         }
 
