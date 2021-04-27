@@ -39,6 +39,7 @@
               <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
               <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
+              <li><a onclick="logout()" style="display: flex;"><span>Keluar</span><i class="material-icons">exit_to_app</i></a></li>
             </ul>
           </div>
         </div>
@@ -64,7 +65,8 @@
   </footer>
 
   <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="{{ url("js/materialize.js") }}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.js "></script>
   <script type="text/javascript">
     $(document).ready(function(){
       M.AutoInit();
@@ -91,6 +93,29 @@
         }
       })
     })
+    let url = window.location.href;
+    let splited_url = url.split('?token=');
+    window.token = splited_url[1];
+
+    $('a').click(function(event) {
+      event.preventDefault();
+      let url = $(this).attr('href');
+      if (url) {
+        window.location.href = url + "?token=" + window.token;
+      }
+    });
+
+    function logout() {
+      $.post('/auth/logout?token=' + window.token)
+      .done(function (data) {
+        M.toast({html: data.message});
+        window.location.href = '/?token=' + window.token
+      })
+      .fail(function(error){
+        console.log(error);
+      });
+    }
+
   </script>
 </body>
 </html>
