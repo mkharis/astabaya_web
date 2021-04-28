@@ -11,7 +11,7 @@
   <!-- Import MDI Icon -->
   <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
   <!-- Import Jquery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> --}}
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -39,6 +39,7 @@
               <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
               <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
+              <li><a onclick="logout()" style="display: flex;"><span>Keluar</span><i class="material-icons">exit_to_app</i></a></li>
             </ul>
           </div>
         </div>
@@ -64,6 +65,7 @@
   </footer>
 
   <!--JavaScript at end of body for optimized loading-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="{{ url("js/materialize.js") }}"></script>
   <script type="text/javascript" src="{{ url('js/jscript.js') }}"></script>
 </body>

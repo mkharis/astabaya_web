@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', ['as' => 'beranda', function () {
-//     return view('beranda');
-// }]);
-
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     // Kategori
     Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
     Route::post('/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);
@@ -36,11 +33,9 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::post('/lainnya/updateMedsos', ['as' => 'medsosUpdate', 'uses' => 'TentangController@updateMedsos']);
 });
 
-
-Route::get('/publikasi', ['as' => 'publikasi', function () {
+Route::get('/publikasi', ['middleware' => 'auth', 'as' => 'publikasi', function () {
     return view('publikasi');
 }]);
-
 
 
 // API
@@ -70,4 +65,17 @@ $router->group(['prefix' => 'sub_kategori'], function () use ($router) {
     $router->post('insert',  ['uses' => 'SubKategoriController@insert']);
     $router->post('delete',  ['uses' => 'SubKategoriController@delete']);
     $router->post('update',  ['uses' => 'SubKategoriController@update']);
+});
+
+
+// For login
+$router->group([
+    'prefix' => 'auth'
+], function() use ($router) {
+    $router->get('login', ['as' => 'login', 'uses' => 'Auth\AuthenticationController@showLogin']);
+    $router->post('login', ['uses' => 'Auth\AuthenticationController@login']);
+    $router->post('logout', ['uses' => 'Auth\AuthenticationController@logout']);
+    $router->post('refresh', ['uses' => 'Auth\AuthenticationController@refresh']);
+    $router->post('me', ['uses' => 'Auth\AuthenticationController@me']);
+
 });

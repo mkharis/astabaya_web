@@ -42,4 +42,29 @@ $(document).ready(function(){
             });
         }
     })
-})
+
+  })
+
+let url = window.location.href;
+let splited_url = url.split('?token=');
+window.token = splited_url[1];
+
+$('a').click(function(event) {
+  event.preventDefault();
+  let url = $(this).attr('href');
+  if (url) {
+    window.location.href = url + "?token=" + window.token;
+  }
+});
+
+function logout() {
+  let url = window.location.pathname;
+  $.post(url.slice(0,url.indexOf('public')) + 'public/auth/logout?token=' + window.token)
+  .done(function (data) {
+    M.toast({html: data.message});
+    window.location.href = url.slice(0,url.indexOf('public')) + 'public/?token=' + window.token
+  })
+  .fail(function(error){
+    console.log(error);
+  });
+}
