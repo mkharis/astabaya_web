@@ -14,12 +14,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['namespace' => 'Admin'], function () {
     // Kategori
     Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
     Route::post('/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);
     Route::post('/edit', ['as' => 'kategoriEdit', 'uses' => 'KategoriController@edit']);
     Route::post('/remove', ['as' => 'kategoriRemove', 'uses' => 'KategoriController@remove']);
+    // Sub Kategori
+    Route::post('/addSub', ['as' => 'subKategoriAdd', 'uses' => 'KategoriController@addSub']);
+    Route::post('/editSub', ['as' => 'subKategoriEdit', 'uses' => 'KategoriController@editSub']);
+    Route::post('/removeSub', ['as' => 'subKategoriRemove', 'uses' => 'KategoriController@removeSub']);
+    // Tabel
+    Route::get('/tabel/get', ['uses' => 'TabelController@get']);
+    Route::get('/tabel/{subKategori}', ['as' => 'tabel', 'uses' => 'TabelController@get']);
     // Infografis
     Route::get('/infografis', ['as' => 'infografis', 'uses' => 'InfografisController@get']);
     Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);
@@ -33,7 +40,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/lainnya/updateMedsos', ['as' => 'medsosUpdate', 'uses' => 'TentangController@updateMedsos']);
 });
 
-Route::get('/publikasi', ['middleware' => 'auth', 'as' => 'publikasi', function () {
+Route::get('/publikasi', ['as' => 'publikasi', function () {
     return view('publikasi');
 }]);
 

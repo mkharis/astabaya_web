@@ -15,7 +15,9 @@
 
       <div class="row">
         <div class="col s12 left-align">
-          <h6>Kategori</h6>
+          <div class="section">
+            <h6>Kategori</h6>
+          </div>
           <a href="#modalAddKategori" class="modal-trigger waves-effect waves-light btn-small blue darken-2 btn-edit"><i class="material-icons left">add</i>Tambah</a>
         </div>
 
@@ -44,12 +46,14 @@
 
       <div class="row">
         <div class="col s12 left-align">
-          <h6>Sub Kategori</h6>
-          <a class="waves-effect waves-light btn-small blue darken-2 btn-edit"><i class="material-icons left">add</i>Tambah</a>
+          <div class="section">
+            <h6>Sub Kategori</h6>
+          </div>
+          <a href="#modalAddSubkategori" class="modal-trigger waves-effect waves-light btn-small blue darken-2 btn-edit"><i class="material-icons left">add</i>Tambah</a>
         </div>
 
         <div class="col s12 left-align">
-          <table class="highlight">
+          <table class="highlight" id="listSubKategori">
             <thead>
               <tr>
                   <th>Kategori</th>
@@ -59,18 +63,23 @@
             </thead>
             <tbody>
               @foreach ($subkategori as $sk)
-              <tr>
-                <td>{{ $sk->kategori }}</td>
+              <tr id="{{ $sk->id }}">
+                <td class="kategori" data-kategori-id="{{ $sk->kategori_id }}" data-kategori="{{ $sk->kategori }}">{{ $sk->kategori }}</td>
                 @if ($sk->kategori_id == '3')
-                <td><a class="waves-effect waves-light btn-small teal darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small teal darken-3">{{ $sk->sub_kategori }}</a></td>  
+               
                 @elseif ($sk->kategori_id == '2')
-                <td><a class="waves-effect waves-light btn-small orange darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small orange darken-3">{{ $sk->sub_kategori }}</a></td>  
+                
+                @elseif ($sk->kategori_id == '1')
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small blue darken-3">{{ $sk->sub_kategori }}</a></td>  
+                
                 @else
-                <td><a class="waves-effect waves-light btn-small blue darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small lime darken-3">{{ $sk->sub_kategori }}</a></td>  
                 @endif
                 <td class="center-align">
-                  <a class="waves-effect waves-light btn-small yellow darken-2"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a class="waves-effect waves-light btn-small red darken-2">Hapus</a>
+                  <a href="#modalEditSubkategori" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $sk->id }}"><span class="grey-text text-darken-4">Edit</span></a>
+                  <a href="#modalRemoveSubKategori" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $sk->id }}">Hapus</a>
                 </td>
               </tr>
               @endforeach
@@ -134,6 +143,94 @@
         <div class="modal-content">
           <div class="row">
             <input id="id" name="id" type="hidden" class="validate remove-kategori" value="">
+            <div class="section center-align">
+              <h5>Apakah Anda yakin?</h5>
+            </div>
+            <p>Data yang dihapus tidak akan bisa dikembalikan!</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small green darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light red darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Hapus</button>
+        </div>
+      </form>
+    </div>
+
+    {{-- Add Sub Kategori --}}
+    <div id="modalAddSubkategori" class="modal modal-fixed-footer">
+      <form action="{{ route('subKategoriAdd') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <div class="section center-align">
+              <h5>Sub Kategori</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <select name="kategori_id">
+                <option value="" disabled selected>Pilih Kategori</option>
+                @foreach ($kategori as $k)
+                <option value="{{ $k->id }}">{{ $k->kategori }}</option>
+                @endforeach
+              </select>
+              <label>Kategori</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <label id="sub_kategori" class="edit-sub_kategori" for="sub_kategori">Sub Kategori</label>
+              <input id="sub_kategori" name="sub_kategori" type="text" class="validate edit-sub_kategori">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+        </div>
+      </form>
+    </div>
+
+    {{-- Edit Sub Kategori --}}
+    <div id="modalEditSubkategori" class="modal modal-fixed-footer">
+      <form action="{{ route('subKategoriEdit') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <div class="section center-align">
+              <h5>Sub Kategori</h5>
+            </div>
+          </div>
+          <input id="id" name="id" type="hidden" class="validate edit-sub-kategori" value="">
+          <div class="row">
+            <div class="input-field">
+              <select name="kategori_id" id="selectKategori">
+                <option value="" disabled selected>Pilih Kategori</option>
+                @foreach ($kategori as $k)
+                <option value="{{ $k->id }}">{{ $k->kategori }}</option>
+                @endforeach
+              </select>
+              <label>Kategori</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <label id="subKategori" class="edit-sub-kategori" for="subKategori">Sub Kategori</label>
+              <input id="subKategori" name="subKategori" type="text" class="validate edit-subKategori">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+        </div>
+      </form>
+    </div>
+
+    {{-- Remove Sub Kategori --}}
+    <div id="modalRemoveSubKategori" class="modal">
+      <form action="{{ route('subKategoriRemove') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <input id="id" name="id" type="hidden" class="validate remove-sub-kategori" value="">
             <div class="section center-align">
               <h5>Apakah Anda yakin?</h5>
             </div>

@@ -28,7 +28,7 @@ $(document).ready(function(){
     $('#listKategori').on('click', '.modal-trigger', function() {
         var kategori_id = $(this).data('id');
         var kategori = $(this).parents('#' + kategori_id).children('.kategori').data('kategori');
-        console.log(kategori_id);
+
         if(kategori_id) {
             // Fill Kategori Id
             // For Edit
@@ -42,6 +42,29 @@ $(document).ready(function(){
             });
         }
     })
+
+    $('#listSubKategori').on('click', '.modal-trigger', function() {
+      var subKategori_id = $(this).data('id');
+      var kategori_id = $(this).parents('#' + subKategori_id).children('.kategori').data('kategori-id');
+      var kategori = $(this).parents('#' + subKategori_id).children('.kategori').data('kategori');
+      var subKategori = $(this).parents('#' + subKategori_id).children('.subKategori').data('sub-kategori');
+      
+      if(subKategori_id) {
+          // Fill Kategori Id
+          // For Edit
+          $('input#id.validate.edit-sub-kategori').val(subKategori_id);
+          // Fill Kategori
+          $("select#selectKategori option[value='"+kategori_id+"']").attr('selected', true);
+          $("input.select-dropdown.dropdown-trigger").val(kategori);
+          // For Remove
+          $('input#id.validate.remove-sub-kategori').val(subKategori_id);
+          // Fill Sub Kategori Name
+          $('input#subKategori.validate.edit-subKategori').val(subKategori);
+          $('label#subKategori.edit-subKategori', function() {
+              M.updateTextFields();
+          });
+      }
+  })
 
   })
 

@@ -47,4 +47,32 @@ class KategoriController extends Controller
 
         return redirect()->route('kategori');
     }
+
+    public function addSub(Request $request) {
+        SubKategori::create([
+            'sub_kategori' => $request->sub_kategori,
+            'kategori_id' => $request->kategori_id,
+        ]);
+
+        return redirect()->route('kategori');
+    }
+
+    public function editSub(Request $request)
+    {
+        $subKategori = SubKategori::find($request->id);
+
+        $subKategori->update([
+            'kategori_id' => $request->kategori_id,
+            'sub_kategori' => $request->subKategori,
+        ]);
+
+        return redirect()->route('kategori');
+    }
+
+    public function removeSub(Request $request)
+    {
+        SubKategori::destroy($request->id);
+
+        return redirect()->route('kategori');
+    }
 }

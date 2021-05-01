@@ -20,6 +20,7 @@
     <style>
         html,body {
             height: 100%;
+            font-family: 'Josefin Sans', sans-serif;
         }
         html {
             display: table;
@@ -70,7 +71,7 @@
                 </div> --}}
                 <div class="row">
                     <div class="input-field col s12">
-                        <button type="submit" class="btn  blue waves-effect waves-light col s12">Login</button>
+                        <button type="submit" class="btn  blue waves-effect waves-light col s12" style="font-family: 'Josefin Sans', sans-serif;">Login</button>
                     </div>
                 </div>
                 {{-- <div class="row">

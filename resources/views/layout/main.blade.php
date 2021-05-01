@@ -19,7 +19,7 @@
   <title>@yield('title')</title>
 
   <style>
-    body {
+    html,body {
       font-family: 'Josefin Sans', sans-serif;
     }
   </style>
@@ -38,15 +38,15 @@
               <li><a href="{{ route("kategori") }}">Kategori</a></li>
               <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
-              <li><a href="{{ route("lainnya") }}">Lainnya</a></li>
-              <li><a onclick="logout()" style="display: flex;"><span>Keluar</span><i class="material-icons">exit_to_app</i></a></li>
+              <li><a href="{{ route("lainnya") }}">Tetang</a></li>
+              <li><a onclick="logout()" style="display: flex;"><span>Keluar</span>&nbsp;<i class="material-icons">exit_to_app</i></a></li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
 
-    <nav class="z-depth-0" style="background-color:rgba(0,0,0,0.0);">
+    {{-- <nav class="z-depth-0" style="background-color:rgba(0,0,0,0.0);">
       <div class="container">
         <div class="nav-wrapper">
           <div class="col s12" style="padding-left:10px">
@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav> --}}
 
   </header>
 
