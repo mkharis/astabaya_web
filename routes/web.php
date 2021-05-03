@@ -74,6 +74,13 @@ $router->group(['prefix' => 'sub_kategori'], function () use ($router) {
     $router->post('update',  ['uses' => 'SubKategoriController@update']);
 });
 
+$router->group(['prefix' => 'infografis'], function () use ($router) {
+    $router->get('get',  ['uses' => 'InfografisController@get']);
+    $router->post('insert',  ['uses' => 'InfografisController@insert']);
+    $router->post('delete',  ['uses' => 'InfografisController@delete']);
+    $router->post('update',  ['uses' => 'InfografisController@update']);
+});
+
 
 // For login
 $router->group([
