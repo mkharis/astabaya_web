@@ -45,6 +45,11 @@
         <div class="col s12 z-depth-6 card-panel">
             <form id="form-login" class="login-form">
                 <div class="row">
+                    <div class="section center-align">
+                        <a href="{{ route("kategori") }}">
+                            <img src="{{ url('images/astabaya2.png') }}" height="60"/>
+                        </a>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
