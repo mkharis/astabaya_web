@@ -18,8 +18,8 @@ $(document).ready(function(){
             // For Remove
             $('input#id.validate.remove-infografis').val(infografis_id);
             // Fill Infografis Judul
-            $('input#judul.validate.edit-infografis').val(judul);
-            $('label#judul.edit-infografis', function() {
+            $('input#judul_edit.validate.edit-infografis').val(judul);
+            $('label#judul_edit.edit-infografis', function() {
                 M.updateTextFields();
             });
         }
@@ -186,3 +186,51 @@ $("#formRemoveSubkategori").submit(function(event){
       window.location.reload();
     });
 });
+
+// INFOGRAFIS
+// Create
+// $("#formAddSubkategori").submit(function(event){
+//   event.preventDefault();
+//   let url = window.location.pathname;
+//   let formData = {
+//     sub_kategori: $("#sub_kategori").val(),
+//     link: "null",
+//     kategori_id: $("#kategori_id").find(":selected").val()
+//   }
+//   console.log(formData);
+//   $.post(url.slice(0,url.indexOf('public')) + "public/addSub?token=" + window.token, formData)
+//     .done(function(){
+//       M.toast({html: 'Sub Kategori berhasil ditambahkan'});
+//       window.location.reload();
+//     });
+// });
+
+// Edit
+$("#formEditInfografis").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#id").val(),
+    judul: $("#judul_edit").val(),
+  }
+  console.log(formData);
+  $.post(url.slice(0,url.indexOf('public')) + "public/infografis/edit?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Infografis berhasil diperbaruhi'});
+      window.location.reload();
+    });
+});
+
+// Delete
+// $("#formRemoveSubkategori").submit(function(event){
+//   event.preventDefault();
+//   let url = window.location.pathname;
+//   let formData = {
+//     id: $("#idSub").val()
+//   }
+//   $.post(url.slice(0,url.indexOf('public')) + "public/removeSub?token=" + window.token, formData)
+//     .done(function(){
+//       M.toast({html: 'Kategori berhasil dihapus'});
+//       window.location.reload();
+//     });
+// });

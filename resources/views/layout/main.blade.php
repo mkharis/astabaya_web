@@ -36,7 +36,6 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               {{-- <li><a href="{{ route("beranda") }}">Beranda</a></li> --}}
               <li><a href="{{ route("kategori") }}">Kategori</a></li>
-              <li><a href="{{ route("publikasi") }}">Publikasi</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
               <li><a href="{{ route("lainnya") }}">Tetang</a></li>
               <li><a onclick="logout()" style="display: flex;"><span>Keluar</span>&nbsp;<i class="material-icons">exit_to_app</i></a></li>

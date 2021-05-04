@@ -81,7 +81,7 @@
 
     {{-- Edit Infografis --}}
     <div id="modalEditInfografis" class="modal">
-      <form action="{{ route('infografisEdit') }}" method="POST" enctype="multipart/form-data">
+      <form id="formEditInfografis" action="{{ route('infografisEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
@@ -89,8 +89,8 @@
             </div>
             <input id="id" name="id" type="hidden" class="validate edit-infografis" value="">
             <div class="input-field">
-              <input id="judul" name="judul" type="text" class="validate edit-infografis">
-              <label id="judul" class="edit-infografis" for="judul">Judul</label>
+              <label class="edit-infografis" for="judul">Judul</label>
+              <input id="judul_edit" name="judul" type="text" class="validate edit-infografis">
             </div>
           </div>
         </div>
