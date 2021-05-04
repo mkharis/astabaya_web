@@ -1,6 +1,6 @@
 @extends('layout/main')
 
-@section('title','Lainnya')
+@section('title','Tentang')
 
 @section('breadcrumb')
 <a href="{{ url() }}" class="breadcrumb">Beranda</a>
