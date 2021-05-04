@@ -81,6 +81,10 @@ $router->group(['prefix' => 'infografis'], function () use ($router) {
     $router->post('update',  ['uses' => 'InfografisController@update']);
 });
 
+$router->group(['prefix' => 'tentang'], function () use ($router) {
+    $router->get('get',  ['uses' => 'TentangController@get']);
+});
+
 
 // For login
 $router->group([
