@@ -96,15 +96,15 @@
     <!-- Modal Structure -->
     {{-- Add Kategori --}}
     <div id="modalAddKategori" class="modal">
-      <form action="{{ route('kategoriAdd') }}" method="POST" enctype="multipart/form-data">
+      <form id="formAddKategori" action="{{ route('kategoriAdd') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
               <h5>Kategori</h5>
             </div>
             <div class="input-field">
-              <input id="kategori" name="kategori" type="text" class="validate edit-kategori">
-              <label id="kategori" class="edit-kategori" for="kategori">Kategori</label>
+              <label class="edit-kategori" for="kategoriadd">Kategori</label>
+              <input id="kategoriadd" name="kategori" type="text" class="validate edit-kategori">
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
 
     {{-- Edit Kategori --}}
     <div id="modalEditKategori" class="modal">
-      <form action="{{ route('kategoriEdit') }}" method="POST" enctype="multipart/form-data">
+      <form id="formEditKategori" action="{{ route('kategoriEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
@@ -126,7 +126,7 @@
             <input id="id" name="id" type="hidden" class="validate edit-kategori" value="">
             <div class="input-field">
               <input id="kategori" name="kategori" type="text" class="validate edit-kategori">
-              <label id="kategori" class="edit-kategori" for="kategori">Kategori</label>
+              <label class="edit-kategori" for="kategori">Kategori</label>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@
     
     {{-- Remove Kategori --}}
     <div id="modalRemoveKategori" class="modal">
-      <form action="{{ route('kategoriRemove') }}" method="POST" enctype="multipart/form-data">
+      <form id="formRemoveKategori" action="{{ route('kategoriRemove') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <input id="id" name="id" type="hidden" class="validate remove-kategori" value="">
@@ -158,7 +158,7 @@
 
     {{-- Add Sub Kategori --}}
     <div id="modalAddSubkategori" class="modal modal-fixed-footer">
-      <form action="{{ route('subKategoriAdd') }}" method="POST" enctype="multipart/form-data">
+      <form id="formAddSubkategori" action="{{ route('subKategoriAdd') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
@@ -167,7 +167,7 @@
           </div>
           <div class="row">
             <div class="input-field">
-              <select name="kategori_id">
+              <select id="kategori_id" name="kategori_id">
                 <option value="" disabled selected>Pilih Kategori</option>
                 @foreach ($kategori as $k)
                 <option value="{{ $k->id }}">{{ $k->kategori }}</option>
@@ -178,7 +178,7 @@
           </div>
           <div class="row">
             <div class="input-field">
-              <label id="sub_kategori" class="edit-sub_kategori" for="sub_kategori">Sub Kategori</label>
+              <label class="edit-sub_kategori" for="sub_kategori">Sub Kategori</label>
               <input id="sub_kategori" name="sub_kategori" type="text" class="validate edit-sub_kategori">
             </div>
           </div>
@@ -192,14 +192,14 @@
 
     {{-- Edit Sub Kategori --}}
     <div id="modalEditSubkategori" class="modal modal-fixed-footer">
-      <form action="{{ route('subKategoriEdit') }}" method="POST" enctype="multipart/form-data">
+      <form id="formEditSubkategori" action="{{ route('subKategoriEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
               <h5>Sub Kategori</h5>
             </div>
           </div>
-          <input id="id" name="id" type="hidden" class="validate edit-sub-kategori" value="">
+          <input id="idSub" name="id" type="hidden" class="validate edit-sub-kategori" value="">
           <div class="row">
             <div class="input-field">
               <select name="kategori_id" id="selectKategori">
@@ -213,7 +213,7 @@
           </div>
           <div class="row">
             <div class="input-field">
-              <label id="subKategori" class="edit-sub-kategori" for="subKategori">Sub Kategori</label>
+              <label class="edit-sub-kategori" for="subKategori">Sub Kategori</label>
               <input id="subKategori" name="subKategori" type="text" class="validate edit-subKategori">
             </div>
           </div>
@@ -227,10 +227,10 @@
 
     {{-- Remove Sub Kategori --}}
     <div id="modalRemoveSubKategori" class="modal">
-      <form action="{{ route('subKategoriRemove') }}" method="POST" enctype="multipart/form-data">
+      <form id="formRemoveSubkategori" action="{{ route('subKategoriRemove') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
-            <input id="id" name="id" type="hidden" class="validate remove-sub-kategori" value="">
+            <input id="idSub" name="id" type="hidden" class="validate remove-sub-kategori" value="">
             <div class="section center-align">
               <h5>Apakah Anda yakin?</h5>
             </div>

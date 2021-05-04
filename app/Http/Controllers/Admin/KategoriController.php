@@ -51,6 +51,7 @@ class KategoriController extends Controller
     public function addSub(Request $request) {
         SubKategori::create([
             'sub_kategori' => $request->sub_kategori,
+            'link' => $request->link,
             'kategori_id' => $request->kategori_id,
         ]);
 

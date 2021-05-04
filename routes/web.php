@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     // Kategori
     Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
     Route::post('/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);

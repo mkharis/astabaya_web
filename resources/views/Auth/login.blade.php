@@ -92,8 +92,6 @@
             event.preventDefault();
             let email = $('#email').val();
             let password = $('#password').val();
-            console.log(email);
-            console.log(password);
             $.post("{{ url('/auth/login/') }}", {
                 email: email,
                 password: password

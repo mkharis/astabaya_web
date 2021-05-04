@@ -52,7 +52,7 @@ $(document).ready(function(){
       if(subKategori_id) {
           // Fill Kategori Id
           // For Edit
-          $('input#id.validate.edit-sub-kategori').val(subKategori_id);
+          $('input#idSub.validate.edit-sub-kategori').val(subKategori_id);
           // Fill Kategori
           $("select#selectKategori option[value='"+kategori_id+"']").attr('selected', true);
           $("input.select-dropdown.dropdown-trigger").val(kategori);
@@ -91,3 +91,98 @@ function logout() {
     console.log(error);
   });
 }
+
+
+// UNTUK KEPERLUAN CRUD DATA
+
+//  KATEGORI
+// Create
+$("#formAddKategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    kategori: $("#kategoriadd").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/add?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Kategori berhasil ditambahkan'});
+      window.location.reload();
+    });
+});
+
+// Edit
+$("#formEditKategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#id").val(),
+    kategori: $("#kategori").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/edit?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Kategori berhasil diperbaruhi'});
+      window.location.reload();
+    });
+});
+
+// Delete
+$("#formRemoveKategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#id").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/remove?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Kategori berhasil dihapus'});
+      window.location.reload();
+    });
+});
+
+// SUBKATEGORI
+// Create
+$("#formAddSubkategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    sub_kategori: $("#sub_kategori").val(),
+    link: "null",
+    kategori_id: $("#kategori_id").find(":selected").val()
+  }
+  console.log(formData);
+  $.post(url.slice(0,url.indexOf('public')) + "public/addSub?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Sub Kategori berhasil ditambahkan'});
+      window.location.reload();
+    });
+});
+
+// Edit
+$("#formEditSubkategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idSub").val(),
+    kategori_id: $("#selectKategori").find(":selected").val(),
+    subKategori: $("#subKategori").val(),
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/editSub?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Sub Kategori berhasil diperbaruhi'});
+      window.location.reload();
+    });
+});
+
+// Delete
+$("#formRemoveSubkategori").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idSub").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/removeSub?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Kategori berhasil dihapus'});
+      window.location.reload();
+    });
+});
