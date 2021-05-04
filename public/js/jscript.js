@@ -10,6 +10,7 @@ $(document).ready(function(){
     $('#listInfografi').on('click', '.modal-trigger', function() {
         var infografis_id = $(this).data('id');
         var judul = $(this).parents('#' + infografis_id).children('.judul').data('judul');
+        var link = $(this).parents('#' + infografis_id).children('.link').data('link');
         
         if(infografis_id) {
             // Fill Infografis Id
@@ -20,6 +21,11 @@ $(document).ready(function(){
             // Fill Infografis Judul
             $('input#judul_edit.validate.edit-infografis').val(judul);
             $('label#judul_edit.edit-infografis', function() {
+                M.updateTextFields();
+            });
+            // Fill Infografis Link
+            $('input#link_edit.validate.edit-infografis').val(link);
+            $('label#link_edit.edit-infografis', function() {
                 M.updateTextFields();
             });
         }
@@ -189,21 +195,20 @@ $("#formRemoveSubkategori").submit(function(event){
 
 // INFOGRAFIS
 // Create
-// $("#formAddSubkategori").submit(function(event){
-//   event.preventDefault();
-//   let url = window.location.pathname;
-//   let formData = {
-//     sub_kategori: $("#sub_kategori").val(),
-//     link: "null",
-//     kategori_id: $("#kategori_id").find(":selected").val()
-//   }
-//   console.log(formData);
-//   $.post(url.slice(0,url.indexOf('public')) + "public/addSub?token=" + window.token, formData)
-//     .done(function(){
-//       M.toast({html: 'Sub Kategori berhasil ditambahkan'});
-//       window.location.reload();
-//     });
-// });
+$("#formAddInfografis").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    judul: $("#judul_add").val(),
+    link: $('#link_add').val(),
+  }
+  // console.log(formData);
+  $.post(url.slice(0,url.indexOf('public')) + "public/infografis/add?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Infografis berhasil ditambahkan'});
+      window.location.reload();
+    });
+});
 
 // Edit
 $("#formEditInfografis").submit(function(event){
@@ -212,8 +217,9 @@ $("#formEditInfografis").submit(function(event){
   let formData = {
     id: $("#id").val(),
     judul: $("#judul_edit").val(),
+    link: $('#link_edit').val(),
   }
-  console.log(formData);
+  // console.log(formData);
   $.post(url.slice(0,url.indexOf('public')) + "public/infografis/edit?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Infografis berhasil diperbaruhi'});
@@ -222,15 +228,16 @@ $("#formEditInfografis").submit(function(event){
 });
 
 // Delete
-// $("#formRemoveSubkategori").submit(function(event){
-//   event.preventDefault();
-//   let url = window.location.pathname;
-//   let formData = {
-//     id: $("#idSub").val()
-//   }
-//   $.post(url.slice(0,url.indexOf('public')) + "public/removeSub?token=" + window.token, formData)
-//     .done(function(){
-//       M.toast({html: 'Kategori berhasil dihapus'});
-//       window.location.reload();
-//     });
-// });
+$("#formRemoveInfografis").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#id").val()
+  }
+  // console.log(formData);
+  $.post(url.slice(0,url.indexOf('public')) + "public/infografis/remove?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Infografis berhasil dihapus'});
+      window.location.reload();
+    });
+});

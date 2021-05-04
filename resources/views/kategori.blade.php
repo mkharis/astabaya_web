@@ -21,26 +21,28 @@
           <a href="#modalAddKategori" class="modal-trigger waves-effect waves-light btn-small blue darken-2 btn-edit"><i class="material-icons left">add</i>Tambah</a>
         </div>
 
-        <div class="col s12 left-align">
-          <table class="highlight" id="listKategori">
-            <thead>
-              <tr>
-                  <th>Kategori</th>
-                  <th class="center-align">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($kategori as $k)
-              <tr id="{{ $k->id }}"">
-                <td class="kategori" data-kategori="{{ $k->kategori }}">{{ $k->kategori }}</td>
-                <td class="center-align">
-                  <a href="#modalEditKategori" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $k->id }}"><span class="grey-text text-darken-4">Edit</span></a>
-                  <a href="#modalRemoveKategori" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $k->id }}">Hapus</a>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+        <div class="row">
+          <div class="col s12 left-align">
+            <table class="highlight" id="listKategori">
+              <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th class="center-align">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($kategori as $k)
+                <tr id="{{ $k->id }}"">
+                  <td class="kategori" data-kategori="{{ $k->kategori }}">{{ $k->kategori }}</td>
+                  <td class="center-align">
+                    <a href="#modalEditKategori" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $k->id }}"><span class="grey-text text-darken-4">Edit</span></a>
+                    <a href="#modalRemoveKategori" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $k->id }}">Hapus</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
