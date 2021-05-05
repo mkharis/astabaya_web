@@ -93,7 +93,7 @@
     <!-- Modal Structure -->
     {{-- Informasi Umum --}}
     <div id="modalInfo" class="modal modal-fixed-footer">
-      <form action="{{ route('infoUpdate') }}" method="post">
+      <form id="formInfo" action="{{ route('infoUpdate') }}" method="post">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
@@ -115,7 +115,7 @@
 
     {{-- Visi dan Misi Modal --}}
     <div id="modalVisiMisi" class="modal modal-fixed-footer">
-      <form action="{{ route('visiMisiUpdate') }}" method="post">
+      <form id="formVisiMisi" action="{{ route('visiMisiUpdate') }}" method="post">
         <div class="modal-content">
           <div class="section center-align">
             <h5>Visi dan Misi</h5>
@@ -139,7 +139,7 @@
 
     {{-- Kontak --}}
     <div id="modalKontak" class="modal modal-fixed-footer">
-      <form action="{{ route('kontakUpdate') }}" method="POST">
+      <form id="formKontak" action="{{ route('kontakUpdate') }}" method="POST">
         <div class="modal-content">
           <div class="section center-align">
             <h5>Kontak</h5>
@@ -175,7 +175,7 @@
 
     {{-- Medsos --}}
     <div id="modalMedsos" class="modal modal-fixed-footer">
-      <form action="{{ route('medsosUpdate') }}" method="POST">
+      <form id="formMedsos" action="{{ route('medsosUpdate') }}" method="POST">
         <div class="modal-content">
           <div class="section center-align">
             <h5>Media Sosial</h5>

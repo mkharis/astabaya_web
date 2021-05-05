@@ -241,3 +241,67 @@ $("#formRemoveInfografis").submit(function(event){
       window.location.reload();
     });
 });
+
+// LAINNYA
+// INFORMASI UMUM
+$("#formInfo").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    info: $("#info").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/lainnya/updateInfo?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: "Informasi Umum berhasil diperbaruhi"});
+      window.location.reload();
+    });
+});
+
+// VISI & MISI
+$('#formVisiMisi').submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    visi: $("#visi").val(),
+    misi: $("#misi").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/lainnya/updateVisiMisi?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: "Visi & Misi berhasil diperbaruhi"});
+      window.location.reload();
+    });
+});
+
+// KONTAK
+$('#formKontak').submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    alamat: $("#alamat").val(),
+    telepon: $("#telepon").val(),
+    fax: $("#fax").val(),
+    email: $("#email").val(),
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/lainnya/updateKontak?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: "Kontak berhasil diperbaruhi"});
+      window.location.reload();
+    });
+});
+
+// MEDIA SOSIAL
+$('#formMedsos').submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    website: $("#website").val(),
+    facebook: $("#facebook").val(),
+    instagram: $("#instagram").val(),
+    youtube: $("#youtube").val(),
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/lainnya/updateMedsos?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: "Media Sosial berhasil diperbaruhi"});
+      window.location.reload();
+    });
+});
