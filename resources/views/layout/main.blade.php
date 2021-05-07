@@ -40,7 +40,7 @@
             <ul id="nav-mobile" class="right">
               <li><a href="{{ route("kategori") }}">Kategori</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
-              <li><a href="{{ route("lainnya") }}">Tetang</a></li>
+              <li><a href="{{ route("lainnya") }}">Tentang</a></li>
               <li><a onclick="logout()" style="display: flex;"><span>Keluar</span>&nbsp;<i class="material-icons">exit_to_app</i></a></li>
             </ul>
           </div>
