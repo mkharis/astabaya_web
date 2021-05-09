@@ -2,10 +2,6 @@
 
 @section('title','Beranda')
 
-@section('breadcrumb')
-<a href="." class="breadcrumb">Beranda</a>
-@endsection
-
 @section('main')
 <main>
   <div class="container">
@@ -13,79 +9,136 @@
     <div class="section">
 
       <div class="row">
-        <div class="col s12 left-align"><h6>Sosial dan Kependudukan</h6></div>
+        <div class="col s12 left-align">
+          <div class="section">
+            <a href="#modalAdd" class="modal-trigger waves-effect waves-light btn-small blue darken-2 btn-edit"><i class="material-icons left">add</i>Tambah</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 left-align">
+            <table class="highlight" id="listDataBeranda">
+              <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Nilai</th>
+                    <th>Satuan</th>
+                    <th>Deskripsi</th>
+                    <th class="center-align">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($beranda as $b)
+                <tr id="{{ $b->id }}"">
+                  <td class="judul" data-judul="{{ $b->judul }}">{{ $b->judul }}</td>
+                  <td class="isi red-text" data-isi="{{ $b->isi }}" style="font-size:24px">{{ $b->isi }}</td>
+                  <td class="satuan grey-text" data-satuan="{{ $b->satuan }}">{{ $b->satuan }}</td>
+                  <td class="deskripsi grey-text" style="width: 27%; text-align:justify" data-deskripsi="{{ $b->deskripsi }}">{{ $b->deskripsi }}</td>
+                  <td class="center-align">
+                    <a href="#modalEdit" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $b->id }}"><span class="grey-text text-darken-4">Edit</span></a>
+                    <a href="#modalRemove" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $b->id }}">Hapus</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
-      <div class="row  center-align" style="margin-bottom: 0.5 !important">
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light blue darken-2"><i class="mdi mdi-human-male-female"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light amber"><i class="mdi mdi-account"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light brown"><i class="mdi mdi-cogs"></i></a></div>
-      </div>
-
-      <div class="row  center-align">
-        <div class="col s4 center-align">Penduduk</div>
-        <div class="col s4 center-align">Kemiskinan</div>
-        <div class="col s4 center-align">Tenaga Kerja</div>
-      </div>
-
-      <div class="row  center-align" style="margin-bottom: 0.5 !important">
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light purple lighten-1"><i class="mdi mdi-eye"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light indigo darken-3"><i class="mdi mdi-office-building"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light blue-grey lighten-2"><i class="mdi mdi-dots-horizontal"></i></a></div>
-      </div>
-
-      <div class="row center-align">
-        <div class="col s4 center-align">IPM</div>
-        <div class="col s4 center-align">Pemerintahan</div>
-        <div class="col s4 center-align">Lihat Semua</div>
-      </div>
-
-    </div>
-
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 left-align"><h6>Ekonomi dan Perdagangan</h6></div>
-      </div>
-
-      <div class="row  center-align" style="margin-bottom: 0.5 !important">
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light amber darken-4"><i class="mdi mdi-finance"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light deep-orange darken-4"><i class="mdi mdi-currency-usd"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light blue-grey darken-3"><i class="mdi mdi-arrow-expand"></i></a></div>
-      </div>
-
-      <div class="row  center-align">
-        <div class="col s4 center-align">Pertumbuhan Ekonomi</div>
-        <div class="col s4 center-align">Inflasi</div>
-        <div class="col s4 center-align">Ekspor dan Impor</div>
-      </div>
-
-      <div class="row  center-align" style="margin-bottom: 0.5 !important">
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light cyan lighten-1"><i class="mdi mdi-map-marker"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light light-green darken-2"><i class="mdi mdi-sprout"></i></a></div>
-        <div class="col s4 center-align"><a class="btn-floating btn-large waves-effect waves-light blue-grey lighten-2"><i class="mdi mdi-dots-horizontal"></i></a></div>
-      </div>
-
-      <div class="row center-align">
-        <div class="col s4 center-align">Pariwisata</div>
-        <div class="col s4 center-align">Nilai Tukar Petani</div>
-        <div class="col s4 center-align">Lihat Semua</div>
-      </div>
-
-    </div>
-
-    <div class="section">
-      <div class="row">
-        <div class="col s8 left-align"><h6>Publikasi Terbaru</h6></div>
-        <div class="col s4 right-align"><a href="publikasi" class="waves-effect waves-teal btn-flat"><h6 style="color:#0f8ed6 !important">Lainnya ></h6></a></div>
-      </div>
-      <div class="row">
-        <div class="col s12 left-align"><p>Lorem ipsum dolor sit amet</p></div>
-      </div>
+      
     </div>
 
     <!-- Biar ngga ketutupan footer -->
     <div style="min-height: 56px"></div>
+
+    <!-- Modal Structure -->
+    {{-- Add --}}
+    <div id="modalAdd" class="modal modal-fixed-footer">
+      <form id="formAddBeranda" action="{{ route('berandaAdd') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="add-judul" for="juduladd">Judul</label>
+              <input id="juduladd" name="judul" type="text" class="validate add-judul">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <label class="add-isi" for="isiadd">Nilai</label>
+              <input id="isiadd" name="isi" type="text" class="validate add-isi">
+            </div>
+            <div class="input-field col s6">
+              <label class="add-satuan" for="satuanadd">Satuan</label>
+              <input id="satuanadd" name="satuan" type="text" class="validate add-satuan">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="add-deskripsi" for="deskripsiadd">Deskripsi</label>
+              <textarea id="deskripsiadd" name="deskripsi" class="materialize-textarea validate add-deskripsi"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+        </div>
+      </form>
+    </div>
+
+    {{-- Edit --}}
+    <div id="modalEdit" class="modal modal-fixed-footer">
+      <form id="formEditBeranda" action="{{ route('berandaEdit') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <input id="idEdit" name="id" type="hidden" class="validate edit-id" value="">
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="edit-judul" for="juduledit">Judul</label>
+              <input id="juduledit" name="judul" type="text" class="validate edit-judul">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <label class="edit-isi" for="isiedit">Nilai</label>
+              <input id="isiedit" name="isi" type="text" class="validate edit-isi">
+            </div>
+            <div class="input-field col s6">
+              <label class="edit-satuan" for="satuanedit">Satuan</label>
+              <input id="satuanedit" name="satuan" type="text" class="validate edit-satuan">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="edit-deskripsi" for="deskripsiedit">Deskripsi</label>
+              <textarea id="deskripsiedit" name="deskripsi" class="materialize-textarea validate edit-deskripsi"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
+        </div>
+      </form>
+    </div>
+    
+    {{-- Remove --}}
+    <div id="modalRemove" class="modal">
+      <form id="formRemoveBeranda" action="{{ route('berandaRemove') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="row">
+            <input id="idRemove" name="id" type="hidden" class="validate remove-beranda" value="">
+            <div class="section center-align">
+              <h5>Apakah Anda yakin?</h5>
+            </div>
+            <p>Data yang dihapus tidak akan bisa dikembalikan!</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small green darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light red darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Hapus</button>
+        </div>
+      </form>
+    </div>
 
   </div>
 </main>

@@ -70,7 +70,43 @@ $(document).ready(function(){
               M.updateTextFields();
           });
       }
-  })
+    })
+
+    $('#listDataBeranda').on('click', '.modal-trigger', function() {
+      var beranda_id = $(this).data('id');
+      var judul = $(this).parents('#' + beranda_id).children('.judul').data('judul');
+      var isi = $(this).parents('#' + beranda_id).children('.isi').data('isi');
+      var satuan = $(this).parents('#' + beranda_id).children('.satuan').data('satuan');
+      var deskripsi = $(this).parents('#' + beranda_id).children('.deskripsi').data('deskripsi');
+
+      if(beranda_id){
+        // Fill Data Beranda Id
+        // For Edit
+        $('input#idEdit.validate.edit-id').val(beranda_id);
+        // For Remove
+        $('input#idRemove.validate.remove-beranda').val(beranda_id);
+        // Fill Data Judul
+        $('input#juduledit.validate.edit-judul').val(judul);
+        $('label#juduledit.edit-judul', function() {
+            M.updateTextFields();
+        });
+        // Fill Data Nilai
+        $('input#isiedit.validate.edit-isi').val(isi);
+        $('label#isiedit.edit-isi', function() {
+            M.updateTextFields();
+        });
+        // Fill Data Satuan
+        $('input#satuanedit.validate.edit-satuan').val(satuan);
+        $('label#satuanedit.edit-satuan', function() {
+            M.updateTextFields();
+        });
+        // Fill Data Deskripsi
+        $('textarea#deskripsiedit.validate.edit-deskripsi').val(deskripsi);
+        $('label#deskripsiedit.edit-deskripsi', function() {
+            M.updateTextFields();
+        });
+      }
+    })
 
   })
 
@@ -100,6 +136,55 @@ function logout() {
 
 
 // UNTUK KEPERLUAN CRUD DATA
+// BERANDA
+// Create
+$("#formAddBeranda").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    judul: $("#juduladd").val(),
+    isi: $("#isiadd").val(),
+    satuan: $("#satuanadd").val(),
+    deskripsi: $("#deskripsiadd").val(),
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/add?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Data berhasil ditambahkan'});
+      window.location.reload();
+    });
+});
+
+// Edit
+$("#formEditBeranda").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idEdit").val(),
+    judul: $("#juduledit").val(),
+    isi: $("#isiedit").val(),
+    satuan: $("#satuanedit").val(),
+    deskripsi: $("#deskripsiedit").val(),
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/edit?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Data berhasil diperbaruhi'});
+      window.location.reload();
+    });
+});
+
+// Delete
+$("#formRemoveBeranda").submit(function(event){
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idRemove").val()
+  }
+  $.post(url.slice(0,url.indexOf('public')) + "public/remove?token=" + window.token, formData)
+    .done(function(){
+      M.toast({html: 'Data berhasil dihapus'});
+      window.location.reload();
+    });
+});
 
 //  KATEGORI
 // Create
@@ -109,7 +194,7 @@ $("#formAddKategori").submit(function(event){
   let formData = {
     kategori: $("#kategoriadd").val()
   }
-  $.post(url.slice(0,url.indexOf('public')) + "public/add?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/add?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Kategori berhasil ditambahkan'});
       window.location.reload();
@@ -124,7 +209,7 @@ $("#formEditKategori").submit(function(event){
     id: $("#id").val(),
     kategori: $("#kategori").val()
   }
-  $.post(url.slice(0,url.indexOf('public')) + "public/edit?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/edit?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Kategori berhasil diperbaruhi'});
       window.location.reload();
@@ -138,7 +223,7 @@ $("#formRemoveKategori").submit(function(event){
   let formData = {
     id: $("#id").val()
   }
-  $.post(url.slice(0,url.indexOf('public')) + "public/remove?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/remove?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Kategori berhasil dihapus'});
       window.location.reload();
@@ -156,7 +241,7 @@ $("#formAddSubkategori").submit(function(event){
     kategori_id: $("#kategori_id").find(":selected").val()
   }
   console.log(formData);
-  $.post(url.slice(0,url.indexOf('public')) + "public/addSub?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/addSub?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Sub Kategori berhasil ditambahkan'});
       window.location.reload();
@@ -172,7 +257,7 @@ $("#formEditSubkategori").submit(function(event){
     kategori_id: $("#selectKategori").find(":selected").val(),
     subKategori: $("#subKategori").val(),
   }
-  $.post(url.slice(0,url.indexOf('public')) + "public/editSub?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/editSub?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Sub Kategori berhasil diperbaruhi'});
       window.location.reload();
@@ -186,7 +271,7 @@ $("#formRemoveSubkategori").submit(function(event){
   let formData = {
     id: $("#idSub").val()
   }
-  $.post(url.slice(0,url.indexOf('public')) + "public/removeSub?token=" + window.token, formData)
+  $.post(url.slice(0,url.indexOf('public')) + "public/kategori/removeSub?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Kategori berhasil dihapus'});
       window.location.reload();

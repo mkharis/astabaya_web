@@ -15,15 +15,20 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    // Beranda
+    Route::get('/', ['as' => 'beranda', 'uses' => 'BerandaController@get']);
+    Route::post('/add', ['as' => 'berandaAdd', 'uses' => 'BerandaController@add']);
+    Route::post('/edit', ['as' => 'berandaEdit', 'uses' => 'BerandaController@edit']);
+    Route::post('/remove', ['as' => 'berandaRemove', 'uses' => 'BerandaController@remove']);
     // Kategori
-    Route::get('/', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
-    Route::post('/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);
-    Route::post('/edit', ['as' => 'kategoriEdit', 'uses' => 'KategoriController@edit']);
-    Route::post('/remove', ['as' => 'kategoriRemove', 'uses' => 'KategoriController@remove']);
+    Route::get('/kategori', ['as' => 'kategori', 'uses' => 'KategoriController@get']);
+    Route::post('/kategori/add', ['as' => 'kategoriAdd', 'uses' => 'KategoriController@add']);
+    Route::post('/kategori/edit', ['as' => 'kategoriEdit', 'uses' => 'KategoriController@edit']);
+    Route::post('/kategori/remove', ['as' => 'kategoriRemove', 'uses' => 'KategoriController@remove']);
     // Sub Kategori
-    Route::post('/addSub', ['as' => 'subKategoriAdd', 'uses' => 'KategoriController@addSub']);
-    Route::post('/editSub', ['as' => 'subKategoriEdit', 'uses' => 'KategoriController@editSub']);
-    Route::post('/removeSub', ['as' => 'subKategoriRemove', 'uses' => 'KategoriController@removeSub']);
+    Route::post('/kategori/addSub', ['as' => 'subKategoriAdd', 'uses' => 'KategoriController@addSub']);
+    Route::post('/kategori/editSub', ['as' => 'subKategoriEdit', 'uses' => 'KategoriController@editSub']);
+    Route::post('/kategori/removeSub', ['as' => 'subKategoriRemove', 'uses' => 'KategoriController@removeSub']);
     // Tabel
     Route::get('/tabel/get', ['uses' => 'TabelController@get']);
     Route::get('/tabel/{subKategori}', ['as' => 'tabel', 'uses' => 'TabelController@get']);
@@ -39,10 +44,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/lainnya/updateKontak', ['as' => 'kontakUpdate', 'uses' => 'TentangController@updateKontak']);
     Route::post('/lainnya/updateMedsos', ['as' => 'medsosUpdate', 'uses' => 'TentangController@updateMedsos']);
 });
-
-Route::get('/publikasi', ['as' => 'publikasi', function () {
-    return view('publikasi');
-}]);
 
 
 // API
@@ -79,6 +80,13 @@ $router->group(['prefix' => 'infografis'], function () use ($router) {
     $router->post('insert',  ['uses' => 'InfografisController@insert']);
     $router->post('delete',  ['uses' => 'InfografisController@delete']);
     $router->post('update',  ['uses' => 'InfografisController@update']);
+});
+
+$router->group(['prefix' => 'beranda'], function () use ($router) {
+    $router->get('get',  ['uses' => 'BerandaController@get']);
+    $router->post('insert',  ['uses' => 'BerandaController@insert']);
+    $router->post('delete',  ['uses' => 'BerandaController@delete']);
+    $router->post('update',  ['uses' => 'BerandaController@update']);
 });
 
 $router->group(['prefix' => 'tentang'], function () use ($router) {
