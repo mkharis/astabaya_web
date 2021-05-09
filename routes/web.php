@@ -34,6 +34,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/tabel/add', ['as' => 'tabelAdd', 'uses' => 'TabelController@add']);
     Route::post('/tabel/edit', ['as' => 'tabelEdit', 'uses' => 'TabelController@edit']);
     Route::post('/tabel/remove', ['as' => 'tabelRemove', 'uses' => 'TabelController@remove']);
+    // Isi Tabel
+    Route::post('/tabel/content/add', ['as' => 'tabelContentAdd', 'uses' => 'IsiTabelController@add']);
+    Route::post('/tabel/content/remove', ['as' => 'tabelContentRemove', 'uses' => 'IsiTabelController@remove']);
     // Infografis
     Route::get('/infografis', ['as' => 'infografis', 'uses' => 'InfografisController@get']);
     Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);

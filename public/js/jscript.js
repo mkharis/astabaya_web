@@ -136,6 +136,31 @@ $(document).ready(function(){
       }
     })
 
+    $(".tambah-content").on("click", function() {
+      let formData = {
+        tabel_id: $(this).data("id"),
+        sub_kategori_id: $("#idsubkategori").val()
+      }
+      $.post(url.slice(0,url.indexOf("public")) + "public/tabel/content/add?token=" + window.token, formData)
+      .done(function(){
+        M.toast({html: "Isi tabel berhasil ditambahkan"});
+        window.location.reload();
+      });
+    })
+
+    $(".hapus-content").on("click", function() {
+      let formData = {
+        tabel_id: $(this).data("id"),
+        sub_kategori_id: $("#idsubkategori").val()
+      }
+      console.log(formData);
+      $.post(url.slice(0,url.indexOf("public")) + "public/tabel/content/remove?token=" + window.token, formData)
+      .done(function(){
+        M.toast({html: "Isi tabel berhasil dihapus"});
+        window.location.reload();
+      });
+    })
+
   })
 
 let url = window.location.href;

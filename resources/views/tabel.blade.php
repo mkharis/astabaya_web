@@ -25,6 +25,7 @@
                   <th>Judul</th>
                   <th>Link</th>
                   <th class="center-align">Action</th>
+                  <th class="center-align">Content</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,6 +36,10 @@
                   <td class="center-align">
                     <a href="#modalEdit" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $t->id }}"><span class="grey-text text-darken-4">Edit</span></a>
                     <a href="#modalRemove" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $t->id }}">Hapus</a>
+                  </td>
+                  <td class="center-align">
+                    <a class="waves-effect waves-light btn-small green darken-2 tambah-content" data-id="{{ $t->id }}">Tambah</a>
+                    <a class="waves-effect waves-light btn-small black darken-2 hapus-content" data-id="{{ $t->id }}">Hapus</a>
                   </td>
                 </tr>
                 @endforeach
