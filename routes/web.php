@@ -30,8 +30,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/kategori/editSub', ['as' => 'subKategoriEdit', 'uses' => 'KategoriController@editSub']);
     Route::post('/kategori/removeSub', ['as' => 'subKategoriRemove', 'uses' => 'KategoriController@removeSub']);
     // Tabel
-    Route::get('/tabel/get', ['uses' => 'TabelController@get']);
-    Route::get('/tabel/{subKategori}', ['as' => 'tabel', 'uses' => 'TabelController@get']);
+    Route::get('/tabel/from/{subKategori}', ['as' => 'tabel', 'uses' => 'TabelController@get']);
+    Route::post('/tabel/add', ['as' => 'tabelAdd', 'uses' => 'TabelController@add']);
+    Route::post('/tabel/edit', ['as' => 'tabelEdit', 'uses' => 'TabelController@edit']);
+    Route::post('/tabel/remove', ['as' => 'tabelRemove', 'uses' => 'TabelController@remove']);
     // Infografis
     Route::get('/infografis', ['as' => 'infografis', 'uses' => 'InfografisController@get']);
     Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);

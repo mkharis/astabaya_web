@@ -19,4 +19,34 @@ class TabelController extends Controller
                 
         return view('tabel', compact(['tabel']));
     }
+
+    public function remove(Request $request)
+    {
+        Tabel::destroy($request->id);
+
+        return redirect()->route('tabel', ['subKategori' => $request->sub_kategori_id]);
+    }
+
+    public function add(Request $request)
+    {
+        $kategori = Tabel::create([
+            'tabel' => $request->tabel,
+            'link' => $request->link,
+            'sub_kategori_id' => $request->sub_kategori_id
+        ]);
+
+        return redirect()->route('tabel', ['subKategori' => $request->sub_kategori_id]);
+    }
+
+    public function edit(Request $request)
+    {
+        $tabel = Tabel::find($request->id);
+        $tabel->update([
+            'tabel' => $request->tabel,
+            'link' => $request->link,
+        ]);
+
+        return redirect()->route('tabel', ['subKategori' => $request->sub_kategori_id]);
+    }
+
 }

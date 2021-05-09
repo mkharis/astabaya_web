@@ -68,16 +68,16 @@
               <tr id="{{ $sk->id }}">
                 <td class="kategori" data-kategori-id="{{ $sk->kategori_id }}" data-kategori="{{ $sk->kategori }}">{{ $sk->kategori }}</td>
                 @if ($sk->kategori_id == '3')
-                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small teal darken-3">{{ $sk->sub_kategori }}</a></td>  
+                  <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="{{ route("tabel", ["subKategori" => $sk->id]) }}" class="waves-effect waves-light btn-small teal darken-3">{{ $sk->sub_kategori }}</a></td>  
                
                 @elseif ($sk->kategori_id == '2')
-                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small orange darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="{{ route("tabel", ["subKategori" => $sk->id]) }}" class="waves-effect waves-light btn-small orange darken-3">{{ $sk->sub_kategori }}</a></td>  
                 
                 @elseif ($sk->kategori_id == '1')
-                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small blue darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="{{ route("tabel", ["subKategori" => $sk->id]) }}" class="waves-effect waves-light btn-small blue darken-3">{{ $sk->sub_kategori }}</a></td>  
                 
                 @else
-                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small lime darken-3">{{ $sk->sub_kategori }}</a></td>  
+                <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="{{ route("tabel", ["subKategori" => $sk->id]) }}" class="waves-effect waves-light btn-small lime darken-3">{{ $sk->sub_kategori }}</a></td>  
                 @endif
                 <td class="konsep" data-konsep="{{ $sk->konsep }}" hidden></td>
                 <td class="center-align">
