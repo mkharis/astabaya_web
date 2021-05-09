@@ -54,6 +54,7 @@ $(document).ready(function(){
       var kategori_id = $(this).parents('#' + subKategori_id).children('.kategori').data('kategori-id');
       var kategori = $(this).parents('#' + subKategori_id).children('.kategori').data('kategori');
       var subKategori = $(this).parents('#' + subKategori_id).children('.subKategori').data('sub-kategori');
+      var konsep = $(this).parents('#' + subKategori_id).children('.konsep').data('konsep');
       
       if(subKategori_id) {
           // Fill Kategori Id
@@ -66,6 +67,8 @@ $(document).ready(function(){
           $('input#id.validate.remove-sub-kategori').val(subKategori_id);
           // Fill Sub Kategori Name
           $('input#subKategori.validate.edit-subKategori').val(subKategori);
+          $('textarea#konsep_edit.validate.edit-konsep_edit').val(konsep);
+          M.textareaAutoResize($('textarea#konsep_edit.validate.edit-konsep_edit'));
           $('label#subKategori.edit-subKategori', function() {
               M.updateTextFields();
           });
@@ -237,10 +240,10 @@ $("#formAddSubkategori").submit(function(event){
   let url = window.location.pathname;
   let formData = {
     sub_kategori: $("#sub_kategori").val(),
-    link: "null",
+    link: null,
+    konsep_tambah: $("#konsep_tambah").val(),
     kategori_id: $("#kategori_id").find(":selected").val()
   }
-  console.log(formData);
   $.post(url.slice(0,url.indexOf('public')) + "public/kategori/addSub?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Sub Kategori berhasil ditambahkan'});
@@ -256,6 +259,7 @@ $("#formEditSubkategori").submit(function(event){
     id: $("#idSub").val(),
     kategori_id: $("#selectKategori").find(":selected").val(),
     subKategori: $("#subKategori").val(),
+    konsep_edit: $("#konsep_edit").val(),
   }
   $.post(url.slice(0,url.indexOf('public')) + "public/kategori/editSub?token=" + window.token, formData)
     .done(function(){
@@ -287,7 +291,6 @@ $("#formAddInfografis").submit(function(event){
     judul: $("#judul_add").val(),
     link: $('#link_add').val(),
   }
-  // console.log(formData);
   $.post(url.slice(0,url.indexOf('public')) + "public/infografis/add?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Infografis berhasil ditambahkan'});
@@ -304,7 +307,6 @@ $("#formEditInfografis").submit(function(event){
     judul: $("#judul_edit").val(),
     link: $('#link_edit').val(),
   }
-  // console.log(formData);
   $.post(url.slice(0,url.indexOf('public')) + "public/infografis/edit?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Infografis berhasil diperbaruhi'});
@@ -319,7 +321,6 @@ $("#formRemoveInfografis").submit(function(event){
   let formData = {
     id: $("#id").val()
   }
-  // console.log(formData);
   $.post(url.slice(0,url.indexOf('public')) + "public/infografis/remove?token=" + window.token, formData)
     .done(function(){
       M.toast({html: 'Infografis berhasil dihapus'});

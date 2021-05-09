@@ -79,6 +79,7 @@
                 @else
                 <td class="subKategori" data-sub-kategori="{{ $sk->sub_kategori }}"><a href="#" class="waves-effect waves-light btn-small lime darken-3">{{ $sk->sub_kategori }}</a></td>  
                 @endif
+                <td class="konsep" data-konsep="{{ $sk->konsep }}" hidden></td>
                 <td class="center-align">
                   <a href="#modalEditSubkategori" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $sk->id }}"><span class="grey-text text-darken-4">Edit</span></a>
                   <a href="#modalRemoveSubKategori" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $sk->id }}">Hapus</a>
@@ -184,6 +185,12 @@
               <input id="sub_kategori" name="sub_kategori" type="text" class="validate edit-sub_kategori">
             </div>
           </div>
+          <div class="row">
+            <div class="input-field">
+              <label class="edit-konsep_tambah" for="konsep_tambah">Konsep</label>
+              <textarea id="konsep_tambah" name="konsep_tambah" type="text" class="validate edit-konsep_tambah materialize-textarea"></textarea>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
@@ -217,6 +224,12 @@
             <div class="input-field">
               <label class="edit-sub-kategori" for="subKategori">Sub Kategori</label>
               <input id="subKategori" name="subKategori" type="text" class="validate edit-subKategori">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <label class="edit-konsep_edit" for="konsep_edit">Konsep</label>
+              <textarea id="konsep_edit" name="konsep_edit" type="text" class="validate edit-konsep_edit materialize-textarea"></textarea>
             </div>
           </div>
         </div>

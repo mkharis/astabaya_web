@@ -15,7 +15,7 @@ class KategoriController extends Controller
         $kategori = Kategori::select(['id', 'kategori'])
                 ->get();
 
-        $subkategori = SubKategori::select('sub_kategori.id', 'sub_kategori', 'link', 'kategori', 'kategori_id')
+        $subkategori = SubKategori::select('sub_kategori.id', 'sub_kategori', 'link', 'konsep', 'kategori', 'kategori_id')
                 ->join('kategori', 'sub_kategori.kategori_id', '=', 'kategori.id')
                 ->get();
                 
@@ -52,6 +52,7 @@ class KategoriController extends Controller
         SubKategori::create([
             'sub_kategori' => $request->sub_kategori,
             'link' => $request->link,
+            'konsep' => $request->konsep_tambah,
             'kategori_id' => $request->kategori_id,
         ]);
 
@@ -65,6 +66,7 @@ class KategoriController extends Controller
         $subKategori->update([
             'kategori_id' => $request->kategori_id,
             'sub_kategori' => $request->subKategori,
+            'konsep' => $request->konsep_edit,
         ]);
 
         return redirect()->route('kategori');

@@ -10,7 +10,7 @@ class SubKategoriController extends Controller
 {
     public function get(Request $request)
     {
-        $subKategori = SubKategori::select(['id', 'sub_kategori', 'link'])
+        $subKategori = SubKategori::select(['id', 'sub_kategori', 'link', 'konsep'])
                 ->where('kategori_id', $request->kategori_id)
                 ->get();
 
@@ -34,6 +34,7 @@ class SubKategoriController extends Controller
         $subKategori = SubKategori::create([
             'sub_kategori' => $request->sub_kategori,
             'link' => $request->link,
+            'konsep' => $request->konsep,
             'kategori_id' => $request->kategori_id
         ]);
 
@@ -50,7 +51,8 @@ class SubKategoriController extends Controller
         $subKategori = SubKategori::find($request->id);
         $subKategori->update([
             'sub_kategori' => $request->sub_kategori,
-            'link' => $request->link
+            'link' => $request->link,
+            'konsep' => $request->konsep
         ]);
 
         $data['sub_kategori'] = $subKategori;
