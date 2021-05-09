@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">mail_outline</i>
-                        <input class="validate" id="email" name="email" type="email">
+                        <input class="validate" id="email" name="email" type="email" autofocus>
                         <label for="email" data-error="wrong" data-success="right">Email</label>
                     </div>
                 </div>
