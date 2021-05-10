@@ -42,6 +42,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/infografis/add', ['as' => 'infografisAdd', 'uses' => 'InfografisController@add']);
     Route::post('/infografis/edit', ['as' => 'infografisEdit', 'uses' => 'InfografisController@edit']);
     Route::post('/infografis/remove', ['as' => 'infografisRemove', 'uses' => 'InfografisController@remove']);
+    // Manajemen Akun
+    Route::get('/akun', ['as' => 'akun', 'middleware' => 'super_admin', 'uses' => 'AkunController@get']);
     // Lainnya
     Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
     Route::post('/lainnya/updateInfo', ['as' => 'infoUpdate', 'uses' => 'TentangController@updateInfo']);

@@ -41,6 +41,9 @@
               <li><a href="{{ route("beranda") }}">Beranda</a></li>
               <li><a href="{{ route("kategori") }}">Kategori</a></li>
               <li><a href="{{ route("infografis") }}">Infografis</a></li>
+              @if (auth()->user()->role == "super_admin")
+                <li><a href="{{ route("akun") }}">Manajemen Akun</a></li>
+              @endif
               <li><a href="{{ route("lainnya") }}">Tentang</a></li>
               <li><a onclick="logout()" style="display: flex;"><span>Keluar</span>&nbsp;<i class="material-icons">exit_to_app</i></a></li>
             </ul>
