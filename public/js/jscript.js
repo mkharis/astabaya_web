@@ -1,103 +1,103 @@
-$(document).ready(function(){
-    M.AutoInit();
+$(document).ready(function () {
+  M.AutoInit();
 
-    $(".modal").modal({
-        dismissible: false,
-        preventScrolling: false,
-        }
-    );
+  $(".modal").modal({
+    dismissible: false,
+    preventScrolling: false,
+  }
+  );
 
-    $("#listInfografi").on("click", ".modal-trigger", function() {
-        var infografis_id = $(this).data("id");
-        var judul = $(this).parents("#" + infografis_id).children(".judul").data("judul");
-        var link = $(this).parents("#" + infografis_id).children(".link").data("link");
-        
-        if(infografis_id) {
-            // Fill Infografis Id
-            // For Edit
-            $("input#id.validate.edit-infografis").val(infografis_id);
-            // For Remove
-            $("input#id.validate.remove-infografis").val(infografis_id);
-            // Fill Infografis Judul
-            $("input#judul_edit.validate.edit-infografis").val(judul);
-            $("label#judul_edit.edit-infografis", function() {
-                M.updateTextFields();
-            });
-            // Fill Infografis Link
-            $("input#link_edit.validate.edit-infografis").val(link);
-            $("label#link_edit.edit-infografis", function() {
-                M.updateTextFields();
-            });
-        }
-    })
+  $("#listInfografi").on("click", ".modal-trigger", function () {
+    var infografis_id = $(this).data("id");
+    var judul = $(this).parents("#" + infografis_id).children(".judul").data("judul");
+    var link = $(this).parents("#" + infografis_id).children(".link").data("link");
 
-    $("#listKategori").on("click", ".modal-trigger", function() {
-        var kategori_id = $(this).data("id");
-        var kategori = $(this).parents("#" + kategori_id).children(".kategori").data("kategori");
+    if (infografis_id) {
+      // Fill Infografis Id
+      // For Edit
+      $("input#id.validate.edit-infografis").val(infografis_id);
+      // For Remove
+      $("input#id.validate.remove-infografis").val(infografis_id);
+      // Fill Infografis Judul
+      $("input#judul_edit.validate.edit-infografis").val(judul);
+      $("label#judul_edit.edit-infografis", function () {
+        M.updateTextFields();
+      });
+      // Fill Infografis Link
+      $("input#link_edit.validate.edit-infografis").val(link);
+      $("label#link_edit.edit-infografis", function () {
+        M.updateTextFields();
+      });
+    }
+  })
 
-        if(kategori_id) {
-            // Fill Kategori Id
-            // For Edit
-            $("input#id.validate.edit-kategori").val(kategori_id);
-            // For Remove
-            $("input#id.validate.remove-kategori").val(kategori_id);
-            // Fill Kategori Name
-            $("input#kategori.validate.edit-kategori").val(kategori);
-            $("label#kategori.edit-kategori", function() {
-                M.updateTextFields();
-            });
-        }
-    })
+  $("#listKategori").on("click", ".modal-trigger", function () {
+    var kategori_id = $(this).data("id");
+    var kategori = $(this).parents("#" + kategori_id).children(".kategori").data("kategori");
 
-    $("#listSubKategori").on("click", ".modal-trigger", function() {
-      var subKategori_id = $(this).data("id");
-      var kategori_id = $(this).parents("#" + subKategori_id).children(".kategori").data("kategori-id");
-      var kategori = $(this).parents("#" + subKategori_id).children(".kategori").data("kategori");
-      var subKategori = $(this).parents("#" + subKategori_id).children(".subKategori").data("sub-kategori");
-      var konsep = $(this).parents("#" + subKategori_id).children(".konsep").data("konsep");
-      
-      if(subKategori_id) {
-          // Fill Kategori Id
-          // For Edit
-          $("input#idSub.validate.edit-sub-kategori").val(subKategori_id);
-          // Fill Kategori
-          $("select#selectKategori option[value='"+kategori_id+"']").attr("selected", true);
-          $("input.select-dropdown.dropdown-trigger").val(kategori);
-          // For Remove
-          $("input#id.validate.remove-sub-kategori").val(subKategori_id);
-          // Fill Sub Kategori Name
-          $("input#subKategori.validate.edit-subKategori").val(subKategori);
-          $("textarea#konsep_edit.validate.edit-konsep_edit").val(konsep);
-          M.textareaAutoResize($("textarea#konsep_edit.validate.edit-konsep_edit"));
-          $("label#subKategori.edit-subKategori", function() {
-              M.updateTextFields();
-          });
-      }
-    })
+    if (kategori_id) {
+      // Fill Kategori Id
+      // For Edit
+      $("input#id.validate.edit-kategori").val(kategori_id);
+      // For Remove
+      $("input#id.validate.remove-kategori").val(kategori_id);
+      // Fill Kategori Name
+      $("input#kategori.validate.edit-kategori").val(kategori);
+      $("label#kategori.edit-kategori", function () {
+        M.updateTextFields();
+      });
+    }
+  })
 
-    $("#listDataTabel").on("click", ".modal-trigger", function() {
-      var tabel_id = $(this).data("id");
-      var judul = $(this).parents("#" + tabel_id).children(".tabel").data("tabel");
-      var link = $(this).parents("#" + tabel_id).children(".link").data("link");
+  $("#listSubKategori").on("click", ".modal-trigger", function () {
+    var subKategori_id = $(this).data("id");
+    var kategori_id = $(this).parents("#" + subKategori_id).children(".kategori").data("kategori-id");
+    var kategori = $(this).parents("#" + subKategori_id).children(".kategori").data("kategori");
+    var subKategori = $(this).parents("#" + subKategori_id).children(".subKategori").data("sub-kategori");
+    var konsep = $(this).parents("#" + subKategori_id).children(".konsep").data("konsep");
 
-      if(tabel_id){
-        // Fill Data Tabel Id
-        // For Edit
-        $("input#idedittabel.validate.edit-id").val(tabel_id);
-        // For Remove
-        $("input#idremovetabel.validate.remove-id").val(tabel_id);
-        // Fill Data Judul
-        $("input#tabeledit.validate.edit-tabel").val(judul);
-        $("label.edit-tabel", function() {
-            M.updateTextFields();
-        });
-        // Fill Data Link
-        $("input#linkedit.validate.edit-link").val(link);
-        $("label.edit-link", function() {
-            M.updateTextFields();
-        });
-      }
-    })
+    if (subKategori_id) {
+      // Fill Kategori Id
+      // For Edit
+      $("input#idSub.validate.edit-sub-kategori").val(subKategori_id);
+      // Fill Kategori
+      $("select#selectKategori option[value='" + kategori_id + "']").attr("selected", true);
+      $("input.select-dropdown.dropdown-trigger").val(kategori);
+      // For Remove
+      $("input#id.validate.remove-sub-kategori").val(subKategori_id);
+      // Fill Sub Kategori Name
+      $("input#subKategori.validate.edit-subKategori").val(subKategori);
+      $("textarea#konsep_edit.validate.edit-konsep_edit").val(konsep);
+      M.textareaAutoResize($("textarea#konsep_edit.validate.edit-konsep_edit"));
+      $("label#subKategori.edit-subKategori", function () {
+        M.updateTextFields();
+      });
+    }
+  })
+
+  $("#listDataTabel").on("click", ".modal-trigger", function () {
+    var tabel_id = $(this).data("id");
+    var judul = $(this).parents("#" + tabel_id).children(".tabel").data("tabel");
+    var link = $(this).parents("#" + tabel_id).children(".link").data("link");
+
+    if (tabel_id) {
+      // Fill Data Tabel Id
+      // For Edit
+      $("input#idedittabel.validate.edit-id").val(tabel_id);
+      // For Remove
+      $("input#idremovetabel.validate.remove-id").val(tabel_id);
+      // Fill Data Judul
+      $("input#tabeledit.validate.edit-tabel").val(judul);
+      $("label.edit-tabel", function () {
+        M.updateTextFields();
+      });
+      // Fill Data Link
+      $("input#linkedit.validate.edit-link").val(link);
+      $("label.edit-link", function () {
+        M.updateTextFields();
+      });
+    }
+  })
 
     $("#listDataBeranda").on("click", ".modal-trigger", function() {
       var beranda_id = $(this).data("id");
@@ -142,38 +142,70 @@ $(document).ready(function(){
       }
     })
 
-    $(".tambah-content").on("click", function() {
-      let formData = {
-        tabel_id: $(this).data("id"),
-        sub_kategori_id: $("#idsubkategori").val()
-      }
-      $.post(url.slice(0,url.indexOf("public")) + "public/tabel/content/add?token=" + window.token, formData)
-      .done(function(){
-        M.toast({html: "Isi tabel berhasil ditambahkan"});
-        window.location.reload();
-      });
-    })
+  $("#listDataAkun").on("click", ".modal-trigger", function () {
+    var user_id = $(this).data("id");
+    var nama = $(this).parents("#" + user_id).children(".nama").data("nama");
+    var email = $(this).parents("#" + user_id).children(".email").data("email");
+    var role = $(this).parents("#" + user_id).children(".role").data("role");
 
-    $(".hapus-content").on("click", function() {
-      let formData = {
-        tabel_id: $(this).data("id"),
-        sub_kategori_id: $("#idsubkategori").val()
-      }
-      console.log(formData);
-      $.post(url.slice(0,url.indexOf("public")) + "public/tabel/content/remove?token=" + window.token, formData)
-      .done(function(){
-        M.toast({html: "Isi tabel berhasil dihapus"});
-        window.location.reload();
-      });
-    })
+    if (user_id) {
+      // Fill User Id
+      // For Edit
+      $("input#idEdit.validate.edit-id").val(user_id);
+      // For Remove
+      $("input#idRemove.validate.remove-akun").val(user_id);
+      // For Change Password
+      $("input#idEditPassword.validate.edit-id").val(user_id);
 
+      // Fill user name
+      $("input#namaedit.validate.edit-nama").val(nama);
+      $("label#namaedit.edit-nama", function () {
+        M.updateTextFields();
+      });
+      // Fill user email
+      $("input#emailedit.validate.edit-email").val(email);
+      $("label#emailedit.edit-email", function () {
+        M.updateTextFields();
+      });
+      // Fill user role
+      $("select#roleedit option[value='" + role + "']").attr("selected", true);
+      const roleText = $("select#roleedit").find(":selected").text();
+      $("input.select-dropdown.dropdown-trigger").val(roleText);
+    }
   })
+
+  $(".tambah-content").on("click", function () {
+    let formData = {
+      tabel_id: $(this).data("id"),
+      sub_kategori_id: $("#idsubkategori").val()
+    }
+    $.post(url.slice(0, url.indexOf("public")) + "public/tabel/content/add?token=" + window.token, formData)
+      .done(function () {
+        M.toast({ html: "Isi tabel berhasil ditambahkan" });
+        window.location.reload();
+      });
+  })
+
+  $(".hapus-content").on("click", function () {
+    let formData = {
+      tabel_id: $(this).data("id"),
+      sub_kategori_id: $("#idsubkategori").val()
+    }
+    console.log(formData);
+    $.post(url.slice(0, url.indexOf("public")) + "public/tabel/content/remove?token=" + window.token, formData)
+      .done(function () {
+        M.toast({ html: "Isi tabel berhasil dihapus" });
+        window.location.reload();
+      });
+  })
+
+})
 
 let url = window.location.href;
 let splited_url = url.split("?token=");
 window.token = splited_url[1];
 
-$("a").click(function(event) {
+$("a").click(function (event) {
   event.preventDefault();
   let url = $(this).attr("href");
   if (url) {
@@ -183,21 +215,21 @@ $("a").click(function(event) {
 
 function logout() {
   let url = window.location.pathname;
-  $.post(url.slice(0,url.indexOf("public")) + "public/auth/logout?token=" + window.token)
-  .done(function (data) {
-    M.toast({html: data.message});
-    window.location.href = url.slice(0,url.indexOf("public")) + "public/?token=" + window.token
-  })
-  .fail(function(error){
-    console.log(error);
-  });
+  $.post(url.slice(0, url.indexOf("public")) + "public/auth/logout?token=" + window.token)
+    .done(function (data) {
+      M.toast({ html: data.message });
+      window.location.href = url.slice(0, url.indexOf("public")) + "public/?token=" + window.token
+    })
+    .fail(function (error) {
+      console.log(error);
+    });
 }
 
 
 // UNTUK KEPERLUAN CRUD DATA
 // BERANDA
 // Create
-$("#formAddBeranda").submit(function(event){
+$("#formAddBeranda").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -207,15 +239,15 @@ $("#formAddBeranda").submit(function(event){
     satuan: $("#satuanadd").val(),
     deskripsi: $("#deskripsiadd").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/add?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Data berhasil ditambahkan"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/add?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Data berhasil ditambahkan" });
       window.location.reload();
     });
 });
 
 // Edit
-$("#formEditBeranda").submit(function(event){
+$("#formEditBeranda").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -226,74 +258,74 @@ $("#formEditBeranda").submit(function(event){
     satuan: $("#satuanedit").val(),
     deskripsi: $("#deskripsiedit").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/edit?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Data berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/edit?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Data berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // Delete
-$("#formRemoveBeranda").submit(function(event){
+$("#formRemoveBeranda").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#idRemove").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/remove?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Data berhasil dihapus"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/remove?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Data berhasil dihapus" });
       window.location.reload();
     });
 });
 
 //  KATEGORI
 // Create
-$("#formAddKategori").submit(function(event){
+$("#formAddKategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     kategori: $("#kategoriadd").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/add?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Kategori berhasil ditambahkan"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/add?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Kategori berhasil ditambahkan" });
       window.location.reload();
     });
 });
 
 // Edit
-$("#formEditKategori").submit(function(event){
+$("#formEditKategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#id").val(),
     kategori: $("#kategori").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/edit?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Kategori berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/edit?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Kategori berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // Delete
-$("#formRemoveKategori").submit(function(event){
+$("#formRemoveKategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#id").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/remove?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Kategori berhasil dihapus"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/remove?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Kategori berhasil dihapus" });
       window.location.reload();
     });
 });
 
 // SUBKATEGORI
 // Create
-$("#formAddSubkategori").submit(function(event){
+$("#formAddSubkategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -302,15 +334,15 @@ $("#formAddSubkategori").submit(function(event){
     konsep_tambah: $("#konsep_tambah").val(),
     kategori_id: $("#kategori_id").find(":selected").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/addSub?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Sub Kategori berhasil ditambahkan"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/addSub?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Sub Kategori berhasil ditambahkan" });
       window.location.reload();
     });
 });
 
 // Edit
-$("#formEditSubkategori").submit(function(event){
+$("#formEditSubkategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -319,30 +351,30 @@ $("#formEditSubkategori").submit(function(event){
     subKategori: $("#subKategori").val(),
     konsep_edit: $("#konsep_edit").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/editSub?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Sub Kategori berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/editSub?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Sub Kategori berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // Delete
-$("#formRemoveSubkategori").submit(function(event){
+$("#formRemoveSubkategori").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#idSub").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/kategori/removeSub?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Kategori berhasil dihapus"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/kategori/removeSub?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Kategori berhasil dihapus" });
       window.location.reload();
     });
 });
 
 //  TABEL
 // Create
-$("#formAddTabel").submit(function(event){
+$("#formAddTabel").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -350,15 +382,15 @@ $("#formAddTabel").submit(function(event){
     link: $("#linkadd").val(),
     sub_kategori_id: $("#idsubkategori").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/tabel/add?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Tabel berhasil ditambahkan"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/tabel/add?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Tabel berhasil ditambahkan" });
       window.location.reload();
     });
 });
 
 // Edit
-$("#formEditTabel").submit(function(event){
+$("#formEditTabel").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -367,46 +399,46 @@ $("#formEditTabel").submit(function(event){
     link: $("#linkedit").val(),
     sub_kategori_id: $("#idsubkategori").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/tabel/edit?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Tabel berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/tabel/edit?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Tabel berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // Delete
-$("#formRemoveTabel").submit(function(event){
+$("#formRemoveTabel").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#idremovetabel").val(),
     sub_kategori_id: $("#idsubkategori").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/tabel/remove?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Tabel berhasil dihapus"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/tabel/remove?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Tabel berhasil dihapus" });
       window.location.reload();
     });
 });
 
 // INFOGRAFIS
 // Create
-$("#formAddInfografis").submit(function(event){
+$("#formAddInfografis").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     judul: $("#judul_add").val(),
     link: $("#link_add").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/infografis/add?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Infografis berhasil ditambahkan"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/infografis/add?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Infografis berhasil ditambahkan" });
       window.location.reload();
     });
 });
 
 // Edit
-$("#formEditInfografis").submit(function(event){
+$("#formEditInfografis").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -414,59 +446,178 @@ $("#formEditInfografis").submit(function(event){
     judul: $("#judul_edit").val(),
     link: $("#link_edit").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/infografis/edit?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Infografis berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/infografis/edit?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Infografis berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // Delete
-$("#formRemoveInfografis").submit(function(event){
+$("#formRemoveInfografis").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     id: $("#id").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/infografis/remove?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Infografis berhasil dihapus"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/infografis/remove?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Infografis berhasil dihapus" });
       window.location.reload();
+    });
+});
+
+// MANAJEMEN AKUN
+// Create
+$("#formAddAkun").submit(function (event) {
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    nama: $("#namaadd").val(),
+    email: $("#emailadd").val(),
+    password: $("#passwordadd").val(),
+    roleadd: $("#roleadd").find(':selected').val(),
+  }
+  $.post(url.slice(0, url.indexOf("public")) + "public/akun/add?token=" + window.token, formData)
+    .done(function (response) {
+      M.toast({ html: response.Message });
+      window.location.reload();
+    })
+    .fail(function (error) {
+      if (error.status === 422) {
+        let response = error.responseJSON;
+        if (response.nama) {
+          response.nama.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+        if (response.email) {
+          response.email.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+        if (response.password) {
+          response.password.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+        if (response.role) {
+          response.role.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+      }
+    });
+});
+
+// Edit
+$("#formEditAkun").submit(function (event) {
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idEdit").val(),
+    nama: $("#namaedit").val(),
+    email: $("#emailedit").val(),
+    roleedit: $("#roleedit").find(':selected').val(),
+  }
+  $.post(url.slice(0, url.indexOf("public")) + "public/akun/edit?token=" + window.token, formData)
+    .done(function (response) {
+      M.toast({ html: response.Message });
+      window.location.reload();
+    })
+    .fail(function (error) {
+      if (error.status === 422) {
+        let response = error.responseJSON;
+        if (response.nama) {
+          response.nama.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+        if (response.email) {
+          response.email.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+        if (response.role) {
+          response.role.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+      }
+    });
+});
+
+// Delete
+$("#formRemoveAkun").submit(function (event) {
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idRemove").val()
+  }
+  $.post(url.slice(0, url.indexOf("public")) + "public/akun/remove?token=" + window.token, formData)
+    .done(function (response) {
+      M.toast({ html: response.Message });
+      window.location.reload();
+    });
+});
+
+// Change Password
+$("#formEditPassword").submit(function (event) {
+  event.preventDefault();
+  let url = window.location.pathname;
+  let formData = {
+    id: $("#idEditPassword").val(),
+    password: $("#passwordedit").val(),
+  }
+  $.post(url.slice(0, url.indexOf("public")) + "public/akun/changepassword?token=" + window.token, formData)
+    .done(function (response) {
+      M.toast({ html: response.Message });
+      window.location.reload();
+    })
+    .fail(function (error) {
+      if (error.status === 422) {
+        let response = error.responseJSON;
+        if (response.password) {
+          response.password.forEach(err => {
+            M.toast({ html: err });
+          });
+        }
+      }
     });
 });
 
 // LAINNYA
 // INFORMASI UMUM
-$("#formInfo").submit(function(event){
+$("#formInfo").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     info: $("#info").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/lainnya/updateInfo?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Informasi Umum berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/lainnya/updateInfo?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Informasi Umum berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // VISI & MISI
-$("#formVisiMisi").submit(function(event){
+$("#formVisiMisi").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
     visi: $("#visi").val(),
     misi: $("#misi").val()
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/lainnya/updateVisiMisi?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Visi & Misi berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/lainnya/updateVisiMisi?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Visi & Misi berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // KONTAK
-$("#formKontak").submit(function(event){
+$("#formKontak").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -475,15 +626,15 @@ $("#formKontak").submit(function(event){
     fax: $("#fax").val(),
     email: $("#email").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/lainnya/updateKontak?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Kontak berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/lainnya/updateKontak?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Kontak berhasil diperbaruhi" });
       window.location.reload();
     });
 });
 
 // MEDIA SOSIAL
-$("#formMedsos").submit(function(event){
+$("#formMedsos").submit(function (event) {
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
@@ -492,9 +643,9 @@ $("#formMedsos").submit(function(event){
     instagram: $("#instagram").val(),
     youtube: $("#youtube").val(),
   }
-  $.post(url.slice(0,url.indexOf("public")) + "public/lainnya/updateMedsos?token=" + window.token, formData)
-    .done(function(){
-      M.toast({html: "Media Sosial berhasil diperbaruhi"});
+  $.post(url.slice(0, url.indexOf("public")) + "public/lainnya/updateMedsos?token=" + window.token, formData)
+    .done(function () {
+      M.toast({ html: "Media Sosial berhasil diperbaruhi" });
       window.location.reload();
     });
 });

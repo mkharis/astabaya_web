@@ -44,6 +44,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::post('/infografis/remove', ['as' => 'infografisRemove', 'uses' => 'InfografisController@remove']);
     // Manajemen Akun
     Route::get('/akun', ['as' => 'akun', 'middleware' => 'super_admin', 'uses' => 'AkunController@get']);
+    Route::post('/akun/add', ['as' => 'akunAdd', 'uses' => 'AkunController@add']);
+    Route::post('/akun/edit', ['as' => 'akunEdit', 'uses' => 'AkunController@edit']);
+    Route::post('/akun/remove', ['as' => 'akunRemove', 'uses' => "AkunController@remove"]);
+    Route::post('/akun/changepassword', ['as' => 'akunChangePassword', 'uses' => "AkunController@changePassword"]);
     // Lainnya
     Route::get('/lainnya', ['as' => 'lainnya', 'uses' => 'TentangController@getInfo']);
     Route::post('/lainnya/updateInfo', ['as' => 'infoUpdate', 'uses' => 'TentangController@updateInfo']);

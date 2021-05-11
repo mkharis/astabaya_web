@@ -17,7 +17,7 @@
 
         <div class="row">
           <div class="col s12 left-align">
-            <table class="highlight" id="listDataBeranda">
+            <table class="highlight" id="listDataAkun">
               <thead>
                 <tr>
                     <th>Nama</th>
@@ -32,9 +32,10 @@
                   <td class="nama" data-nama="{{ $u->name }}">{{ $u->name }}</td>
                   <td class="email" data-email="{{ $u->email }}">{{ $u->email }}</td>
                   <td class="role" data-role="{{ $u->role }}">{{ $u->role }}</td>
-                  <td class="center-align" style="width: 25%">
+                  <td class="center-align" style="width: 50%">
                     <a href="#modalEdit" class="modal-trigger waves-effect waves-light btn-small yellow darken-2" data-id="{{ $u->id }}"><span class="grey-text text-darken-4">Edit</span></a>
                     <a href="#modalRemove" class="modal-trigger waves-effect waves-light btn-small red darken-2" data-id="{{ $u->id }}">Hapus</a>
+                    <a href="#modalEditPassword" class="modal-trigger waves-effect waves-light btn-small green darken-2" data-id="{{ $u->id }}">Ganti Password</a>
                   </td>
                 </tr>
                 @endforeach
@@ -52,7 +53,7 @@
     <!-- Modal Structure -->
     {{-- Add --}}
     <div id="modalAdd" class="modal modal-fixed-footer">
-      <form id="formAddAkun" action="{{ route('berandaAdd') }}" method="POST" enctype="multipart/form-data">
+      <form id="formAddAkun" action="{{ route('akunAdd') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <div class="section center-align">
@@ -89,7 +90,7 @@
 
     {{-- Edit --}}
     <div id="modalEdit" class="modal modal-fixed-footer">
-      <form id="formEditAkun" action="{{ route('berandaEdit') }}" method="POST" enctype="multipart/form-data">
+      <form id="formEditAkun" action="{{ route('akunEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <input id="idEdit" name="id" type="hidden" class="validate edit-id" value="">
           <div class="row">
@@ -105,12 +106,8 @@
               <input id="emailedit" name="email" type="email" class="validate edit-email">
             </div>
             <div class="input-field col s12">
-              <label class="edit-password" for="passwordedit">Password</label>
-              <input id="passwordedit" name="password" type="password" class="validate edit-password">
-            </div>
-            <div class="input-field col s12">
               <select id="roleedit" name="roleedit">
-                <option value="" disabled selected>Pilih Kategori</option>
+                <option value="" disabled>Pilih Kategori</option>
                 <option value="super_admin">Super Admin</option>
                 <option value="admin">Admin</option>
               </select>
@@ -124,10 +121,10 @@
         </div>
       </form>
     </div>
-    
+
     {{-- Remove --}}
     <div id="modalRemove" class="modal">
-      <form id="formRemoveAkun" action="{{ route('berandaRemove') }}" method="POST" enctype="multipart/form-data">
+      <form id="formRemoveAkun" action="{{ route('akunRemove') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="row">
             <input id="idRemove" name="id" type="hidden" class="validate remove-akun" value="">
@@ -140,6 +137,28 @@
         <div class="modal-footer">
           <a class="modal-close waves-effect waves-light btn-small green darken-1">Batal</a>
           <button class="btn-small waves-effect waves-light red darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Hapus</button>
+        </div>
+      </form>
+    </div>
+
+    {{-- Change Password --}}
+    <div id="modalEditPassword" class="modal">
+      <form id="formEditPassword" action="{{ route('akunChangePassword') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <input id="idEditPassword" name="id" type="hidden" class="validate edit-id" value="">
+          <div class="row">
+            <div class="section center-align">
+              <h5>Akun</h5>
+            </div>
+            <div class="input-field col s12">
+              <label class="edit-password" for="passwordedit">Password</label>
+              <input id="passwordedit" name="password" type="password" class="validate edit-password">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-light btn-small red darken-1">Batal</a>
+          <button class="btn-small waves-effect waves-light green darken-1" type="submit" name="action" style="font-family: 'Josefin Sans', sans-serif;">Simpan</button>
         </div>
       </form>
     </div>
