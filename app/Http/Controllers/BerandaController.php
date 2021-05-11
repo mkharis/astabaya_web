@@ -10,7 +10,7 @@ class BerandaController extends Controller
 {
     public function get()
     {
-        $beranda = Beranda::select(['id', 'judul', 'isi', 'satuan', 'deskripsi'])
+        $beranda = Beranda::select(['id', 'judul', 'isi', 'satuan', 'deskripsi', 'ikon'])
                 ->get();
 
         $data['beranda'] = $beranda;
@@ -35,6 +35,7 @@ class BerandaController extends Controller
             'isi' => $request->isi,
             'satuan' => $request->satuan,
             'deskripsi' => $request->deskripsi,
+            'ikon' => $request->ikon,
         ]);
 
         $data['beranda'] = $beranda;
@@ -53,6 +54,7 @@ class BerandaController extends Controller
             'isi' => $request->isi,
             'satuan' => $request->satuan,
             'deskripsi' => $request->deskripsi,
+            'ikon' => $request->ikon,
         ]);
 
         $data['beranda'] = $beranda;
