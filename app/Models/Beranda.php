@@ -16,6 +16,6 @@ class Beranda extends Model
     * @var array
     */
     protected $fillable = [
-        'judul','isi','satuan','deskripsi'
+        'ikon','judul','isi','satuan','deskripsi'
     ];
 }

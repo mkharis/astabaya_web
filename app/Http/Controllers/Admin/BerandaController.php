@@ -26,6 +26,7 @@ class BerandaController extends Controller
     public function add(Request $request)
     {
         Beranda::create([
+            'ikon' => $request->ikon,
             'judul' => $request->judul,
             'isi' => $request->isi,
             'satuan' => $request->satuan,
@@ -39,6 +40,7 @@ class BerandaController extends Controller
     {
         $beranda = Beranda::find($request->id);
         $beranda->update([
+            'ikon' => $request->ikon,
             'judul' => $request->judul,
             'isi' => $request->isi,
             'satuan' => $request->satuan,

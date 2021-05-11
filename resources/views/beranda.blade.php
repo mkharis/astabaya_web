@@ -20,6 +20,7 @@
             <table class="highlight" id="listDataBeranda">
               <thead>
                 <tr>
+                    <th>Ikon</th>
                     <th>Judul</th>
                     <th>Nilai</th>
                     <th>Satuan</th>
@@ -29,7 +30,8 @@
               </thead>
               <tbody>
                 @foreach ($beranda as $b)
-                <tr id="{{ $b->id }}"">
+                <tr id="{{ $b->id }}">
+                  <td class="ikon" data-ikon="{{ $b->ikon }}"><i><span class="mdi {{ $b->ikon }}"></span></i></td>
                   <td class="judul" data-judul="{{ $b->judul }}">{{ $b->judul }}</td>
                   <td class="isi red-text" data-isi="{{ $b->isi }}" style="font-size:24px">{{ $b->isi }}</td>
                   <td class="satuan grey-text" data-satuan="{{ $b->satuan }}">{{ $b->satuan }}</td>
@@ -56,6 +58,12 @@
     <div id="modalAdd" class="modal modal-fixed-footer">
       <form id="formAddBeranda" action="{{ route('berandaAdd') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="add-ikon" for="ikonadd">Ikon</label>
+              <input id="ikonadd" name="ikon" type="text" class="validate add-ikon">
+            </div>
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <label class="add-judul" for="juduladd">Judul</label>
@@ -91,6 +99,12 @@
       <form id="formEditBeranda" action="{{ route('berandaEdit') }}" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
           <input id="idEdit" name="id" type="hidden" class="validate edit-id" value="">
+          <div class="row">
+            <div class="input-field col s12">
+              <label class="edit-ikon" for="ikonedit">Ikon</label>
+              <input id="ikonedit" name="ikon" type="text" class="validate edit-ikon">
+            </div>
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <label class="edit-judul" for="juduledit">Judul</label>

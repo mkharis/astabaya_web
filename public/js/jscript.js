@@ -101,6 +101,7 @@ $(document).ready(function(){
 
     $("#listDataBeranda").on("click", ".modal-trigger", function() {
       var beranda_id = $(this).data("id");
+      var ikon = $(this).parents("#" + beranda_id).children(".ikon").data("ikon");
       var judul = $(this).parents("#" + beranda_id).children(".judul").data("judul");
       var isi = $(this).parents("#" + beranda_id).children(".isi").data("isi");
       var satuan = $(this).parents("#" + beranda_id).children(".satuan").data("satuan");
@@ -112,6 +113,11 @@ $(document).ready(function(){
         $("input#idEdit.validate.edit-id").val(beranda_id);
         // For Remove
         $("input#idRemove.validate.remove-beranda").val(beranda_id);
+        // Fill Data Ikon
+        $("input#ikonedit.validate.edit-ikon").val(ikon);
+        $("label#ikonedit.edit-ikon", function() {
+            M.updateTextFields();
+        });
         // Fill Data Judul
         $("input#juduledit.validate.edit-judul").val(judul);
         $("label#juduledit.edit-judul", function() {
@@ -195,6 +201,7 @@ $("#formAddBeranda").submit(function(event){
   event.preventDefault();
   let url = window.location.pathname;
   let formData = {
+    ikon: $("#ikonadd").val(),
     judul: $("#juduladd").val(),
     isi: $("#isiadd").val(),
     satuan: $("#satuanadd").val(),
@@ -213,6 +220,7 @@ $("#formEditBeranda").submit(function(event){
   let url = window.location.pathname;
   let formData = {
     id: $("#idEdit").val(),
+    ikon: $("#ikonedit").val(),
     judul: $("#juduledit").val(),
     isi: $("#isiedit").val(),
     satuan: $("#satuanedit").val(),
